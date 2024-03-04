@@ -1,14 +1,14 @@
 {
-    "id": "42117F7E",
-    "path": "~/Portfolio_Website/projects/Survival/Survival_Analysis.qmd",
-    "project_path": "projects/Survival/Survival_Analysis.qmd",
+    "id": "15D1F9B0",
+    "path": "~/tchuang1290.github.io/projects/BOLD/BOLD.qmd",
+    "project_path": "projects/BOLD/BOLD.qmd",
     "type": "quarto_markdown",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1708899536481.0,
+    "created": 1709425601827.0,
     "source_on_save": false,
-    "relative_order": 5,
+    "relative_order": 6,
     "properties": {
         "rmdVisualMode": "true",
         "rmdVisualWrapConfigured": "true",
@@ -21,11 +21,11 @@
         "rmdVisualModeLocation": "2:0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1708896300,
+    "lastKnownWriteTime": 1709426790,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1708896300,
+    "last_content_update": 1709426790357,
     "read_only": false,
     "read_only_alternatives": []
 }
