@@ -1,0 +1,20 @@
+---
+title: "Energy and Pearson's Distances as Metrics for Brain Region Activation Detection in Audiovisual fMRI Study"
+image: Brain.png
+image-alt: Graphic displaying results of activation detection using Energy distance
+categories:
+  - Summer Institute in Biostatistics
+  - R
+  - Research
+about:
+  template: solana
+  image: Brain.png
+---
+
+This presentation was completed as part of the Summer Institute in Biostatistics at the University of Iowa and completed with Megan Gelement who was at the time a graduate student at Tufts University seeking her master's degree in computer science.
+
+The goal of this research was to determine measures of statistical distance that could be used to detect brain region activation. Since the brain is always active in some capacity, determining if a brain region is reacting to certain stimuli can be difficult.
+
+**Products:**
+
+Presentation: <https://docs.google.com/presentation/d/1kmFVMXeNdWhC2QxnQHdPnNxQeJv75aSqsETd-ZFTruk/edit?usp=sharing>

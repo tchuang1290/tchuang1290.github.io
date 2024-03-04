@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Portfolio_Website",
+    "section": "",
+    "text": "Pronunciation  he/him/his\n\n\nMS in Statistics  Sept 2023 - Present | University of Minnesota\nBA in Statistics and Music  2023 | Macalester College"
+  },
+  {
+    "objectID": "index.html#ting-chien-huang",
+    "href": "index.html#ting-chien-huang",
+    "title": "Portfolio_Website",
+    "section": "",
+    "text": "Pronunciation  he/him/his\n\n\nMS in Statistics  Sept 2023 - Present | University of Minnesota\nBA in Statistics and Music  2023 | Macalester College"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nGWAS and Personalities\n\n\n\nResearch\n\n\nGenetics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEnergy and Pearson’s Distances as Metrics for Brain Region Activation Detection in Audiovisual fMRI Study\n\n\n\nSummer Institute in Biostatistics\n\n\nR\n\n\nResearch\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnalyzing Turbofan Jet Engines using Survival Analysis Methods\n\n\n\nSurvival Analysis\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAmerica Going Green: A Look at Renewable Energy Generation in the U.S.\n\n\n\nCorrelated Data\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "projects/Survival/Survival_Analysis.html",
+    "href": "projects/Survival/Survival_Analysis.html",
+    "title": "Analyzing Turbofan Jet Engines using Survival Analysis Methods",
+    "section": "",
+    "text": "Using Kaplan Meier curves and a Cox proportional hazard model, I analyzed the reliability of simulated turbo fan jet engines from data produced by Commercial Modular Aero-Propulsion System Simulation (C-MAPSS) developed by NASA. This paper and presentation was produced as part of the class STAT 453 “Survival Analysis” at Macalester College.\nProducts\nPaper: https://docs.google.com/document/d/1yq_Jd_1LwriNe1Cd6GYp1IDszdTUs1tMx1HhQSqNwN0/edit\nPresentation: https://docs.google.com/presentation/d/1SZj3brdOlm7r6wHzMqbohh-ljHUzDvJ4sE0llfH7NKY/edit#slide=id.p"
+  },
+  {
+    "objectID": "projects/Personality/Personality.html",
+    "href": "projects/Personality/Personality.html",
+    "title": "GWAS and Personalities",
+    "section": "",
+    "text": "Produced for STAT 494 “Statistical Genetics” at Macalester College with Lucy Tran ’23.\nProducts\nPresentation: https://docs.google.com/presentation/d/1Ti9fU15B1p2mDweW9JadluguxhnSI7qk8W8jGvB5DH4/edit?usp=sharing"
+  },
+  {
+    "objectID": "projects/Renewable Energy/Renewable_Energy.html",
+    "href": "projects/Renewable Energy/Renewable_Energy.html",
+    "title": "America Going Green: A Look at Renewable Energy Generation in the U.S.",
+    "section": "",
+    "text": "Results produced as part of the class STAT 452 “Correlated Data” at Macalester College with Jack Acomb and … Presentation produced separately as my senior capstone presentation.\nProducts\nPresentation: https://docs.google.com/presentation/d/1zKiCGBQ21L8hAcr4kaQXNjakufoih9xJnlrk9HtvWEQ/edit?usp=sharing"
+  },
+  {
+    "objectID": "projects/BOLD/BOLD.html",
+    "href": "projects/BOLD/BOLD.html",
+    "title": "Energy and Pearson’s Distances as Metrics for Brain Region Activation Detection in Audiovisual fMRI Study",
+    "section": "",
+    "text": "This presentation was completed as part of the Summer Institute in Biostatistics at the University of Iowa and completed with Megan Gelement who was at the time a graduate student at Tufts University seeking her master’s degree in computer science.\nThe goal of this research was to determine measures of statistical distance that could be used to detect brain region activation. Since the brain is always active in some capacity, determining if a brain region is reacting to certain stimuli can be difficult.\nProducts:\nPresentation: https://docs.google.com/presentation/d/1kmFVMXeNdWhC2QxnQHdPnNxQeJv75aSqsETd-ZFTruk/edit?usp=sharing"
+  }
+]

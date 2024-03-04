@@ -1,0 +1,23 @@
+{
+  "index.qmd": {
+    "index.html": "0682582f"
+  },
+  "projects/Survival/Survival_Analysis.qmd": {
+    "Survival_Analysis.html": "dcf4c2ab"
+  },
+  "projects.qmd": {
+    "projects.html": "3ed14bdb"
+  },
+  "about.qmd": {
+    "about.html": "95d5c28e"
+  },
+  "projects/Personality/Personality.qmd": {
+    "Personality.html": "172d5e94"
+  },
+  "projects/Renewable Energy/Renewable_Energy.qmd": {
+    "Renewable_Energy.html": "ba601983"
+  },
+  "projects/BOLD/BOLD.qmd": {
+    "BOLD.html": "fbf75f6d"
+  }
+}

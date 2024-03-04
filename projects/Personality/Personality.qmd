@@ -1,0 +1,16 @@
+---
+title: "GWAS and Personalities"
+
+image-alt: Graphic displaying the process of Functional Class Scoring
+categories: 
+  - Research
+  - Genetics
+about: 
+  template: solana
+---
+
+Produced for STAT 494 "Statistical Genetics" at Macalester College with Lucy Tran '23.
+
+**Products**
+
+Presentation: <https://docs.google.com/presentation/d/1Ti9fU15B1p2mDweW9JadluguxhnSI7qk8W8jGvB5DH4/edit?usp=sharing>
