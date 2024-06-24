@@ -19,5 +19,14 @@
   },
   "projects/BOLD/BOLD.qmd": {
     "BOLD.html": "fbf75f6d"
+  },
+  "coursework/Machine Learning with Python and SciKit Learn/SciKit_Learn.qmd": {
+    "SciKit_Learn.html": "c71b5874"
+  },
+  "coursework/Advanced Regression Techniques/Advanced_Regression_Techniques.qmd": {
+    "Advanced_Regression_Techniques.html": "11c39e16"
+  },
+  "coursework.qmd": {
+    "coursework.html": "f90d19ce"
   }
 }

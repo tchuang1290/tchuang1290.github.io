@@ -7,5 +7,12 @@
       "/projects/Survival/Survival_Analysis.html",
       "/projects/Renewable Energy/Renewable_Energy.html"
     ]
+  },
+  {
+    "listing": "/coursework.html",
+    "items": [
+      "/coursework/Machine Learning with Python and SciKit Learn/SciKit_Learn.html",
+      "/coursework/Advanced Regression Techniques/Advanced_Regression_Techniques.html"
+    ]
   }
 ]

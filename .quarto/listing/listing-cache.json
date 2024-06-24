@@ -2,6 +2,9 @@
   "listingMap": {
     "projects.qmd": [
       "projects"
+    ],
+    "coursework.qmd": [
+      "coursework"
     ]
   }
 }
