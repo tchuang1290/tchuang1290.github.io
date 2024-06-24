@@ -1,5 +1,5 @@
 ---
-title: "Non-Data Related Work"
+title: "Other"
 listing: 
   contents: other
   sort: "title desc"
