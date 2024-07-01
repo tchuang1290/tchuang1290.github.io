@@ -5,6 +5,9 @@
     ],
     "coursework.qmd": [
       "coursework"
+    ],
+    "other.qmd": [
+      "other"
     ]
   }
 }

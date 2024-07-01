@@ -28,5 +28,11 @@
   },
   "coursework.qmd": {
     "coursework.html": "f90d19ce"
+  },
+  "other/piano_recital/recital.qmd": {
+    "recital.html": "7d6d5719"
+  },
+  "other.qmd": {
+    "other.html": "8e35198a"
   }
 }

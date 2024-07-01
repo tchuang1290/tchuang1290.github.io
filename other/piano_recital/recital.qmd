@@ -1,0 +1,27 @@
+---
+title: "Senior Capstone-Piano Recital"
+image: recital.png
+image-alt: Ting-Chien Huang performing in Mairs Hall at Macalester College
+categories:
+  - Music
+  - Piano
+about:
+  template: solana
+  image: recital.png
+---
+
+50 minute recital performed as my capstone project for my music major.
+
+Program:
+
+Etude No 16 - Philip Glass
+
+Prelude and Fugue No 10 - Dmitri Shostakovich
+
+Sonata - Ludwig Van Beethoven
+
+Piece - Paul Gabriel Cosme
+
+Ballade No 4 - Frederic Chopin
+
+Watch it here: <https://vimeo.com/822164806/b3802f7e42>
