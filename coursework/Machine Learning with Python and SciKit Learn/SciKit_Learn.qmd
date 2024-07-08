@@ -1,1 +1,17 @@
+---
+title: "Machine Learning in Python with Sci-Kit Learn"
+image: pandas.png
+image-alt: Graphic from pair-plot from first notebook
+categories:
+  - Python
+  - ML
+  - Pandas
+  - SKLearn
+about:
+  template: solana
+  image: pandas.png
+---
 
+Online course through France Université Numérique. Coding in Python in Jupyter Notebooks while learning useful data science and data analysis packages like pandas, seaborn, and scikit-learn.
+
+Github: <https://github.com/tchuang1290/MLScikit-Learn/tree/main>

@@ -78,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -193,7 +193,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ML">ML <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Pandas">Pandas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SKLearn">SKLearn <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -212,6 +212,9 @@ window.Quarto = {
      <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
        <option value="" disabled="" selected="" hidden="">Order By</option>
        <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
          <option value="listing-author" data-direction="asc">
           Author
         </option>
@@ -223,8 +226,8 @@ window.Quarto = {
     </div>
 </div>
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1719254102531" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
-<a href="./coursework/Machine Learning with Python and SciKit Learn/SciKit_Learn.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1719254088938" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<a href="./coursework/Advanced Regression Techniques/Advanced_Regression_Techniques.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
@@ -240,13 +243,32 @@ window.Quarto = {
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1719254088938" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
-<a href="./coursework/Advanced Regression Techniques/Advanced_Regression_Techniques.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="1" data-categories="Python,ML,Pandas,SKLearn" data-listing-file-modified-sort="1720455395484" data-listing-reading-time-sort="1" data-listing-word-count-sort="27">
+<a href="./coursework/Machine Learning with Python and SciKit Learn/SciKit_Learn.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<p class="card-img-top">
+<img src="./coursework/Machine Learning with Python and SciKit Learn/pandas.png" class="thumbnail-image card-img" style="height: 150px;" alt="Graphic from pair-plot from first notebook">
+</p>
 <div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Machine Learning in Python with Sci-Kit Learn
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
+Python
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ML'); return false;">
+ML
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Pandas'); return false;">
+Pandas
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SKLearn'); return false;">
+SKLearn
+</div>
+</div>
 <div class="card-text listing-description">
-
+Online course through France Université Numérique. Coding in Python in Jupyter Notebooks while learning useful data science and data analysis packages like pandas, seaborn…
 </div>
 <div class="card-attribution card-text-small start">
 <div class="listing-author">
