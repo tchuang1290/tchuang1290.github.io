@@ -18,7 +18,7 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nGWAS and Personalities\n\n\n\nResearch\n\n\nGenetics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEnergy and Pearson’s Distances as Metrics for Brain Region Activation Detection in Audiovisual fMRI Study\n\n\n\nSummer Institute in Biostatistics\n\n\nR\n\n\nResearch\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCO2 Levels in 20 Major Countries\n\n\n\nMachine Learning\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnalyzing Turbofan Jet Engines using Survival Analysis Methods\n\n\n\nSurvival Analysis\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAmerica Going Green: A Look at Renewable Energy Generation in the U.S.\n\n\n\nCorrelated Data\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nstat253_project\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGWAS and Personalities\n\n\n\nResearch\n\n\nGenetics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEnergy and Pearson’s Distances as Metrics for Brain Region Activation Detection in Audiovisual fMRI Study\n\n\n\nSummer Institute in Biostatistics\n\n\nR\n\n\nResearch\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCO2 Levels in 20 Major Countries\n\n\n\nMachine Learning\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnalyzing Turbofan Jet Engines using Survival Analysis Methods\n\n\n\nSurvival Analysis\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAmerica Going Green: A Look at Renewable Energy Generation in the U.S.\n\n\n\nCorrelated Data\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -88,6 +88,6 @@
     "href": "projects/CO2/CO2.html",
     "title": "CO2 Levels in 20 Major Countries",
     "section": "",
-    "text": "Completed as final project for STAT 253 “Statistical Machine Learning” at Macalester College with Ayaa Asoba and Julia Coelho\nPresentation: https://docs.google.com/presentation/d/1cRzZPT1LijIIKyGGKAEzkKDYWMsYUf22/edit?usp=sharing&ouid=116188639352950574208&rtpof=true&sd=true\nRMarkdown HTML: file:///Users/ting-chienhuang/tchuang1290.github.io/projects/CO2/Final-Project-Draft.html\nGithub: https://github.com/tchuang1290/StatMLFinalProj"
+    "text": "Completed as final project for STAT 253 “Statistical Machine Learning” at Macalester College with Ayaa Asoba and Julia Coelho\nPresentation: https://docs.google.com/presentation/d/1cRzZPT1LijIIKyGGKAEzkKDYWMsYUf22/edit?usp=sharing&ouid=116188639352950574208&rtpof=true&sd=true\nGithub: https://github.com/tchuang1290/StatMLFinalProj"
   }
 ]

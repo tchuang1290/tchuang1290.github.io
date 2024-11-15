@@ -1,0 +1,473 @@
+---
+title: "stat253_project"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Read in data
+
+```{r}
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(rpart.plot)
+library(vip)
+library(tidyr)
+library(tidymodels)
+library(probably) #install.packages('probably')
+tidymodels_prefer()
+esgdata <- read_csv('ESGData.csv')
+esgdata %>% distinct(`Indicator Name`,`Indicator Code`)
+```
+
+## Data cleaning
+
+```{r}
+# data cleaning
+esgdata_clean <- filter(esgdata,`Indicator Code`%in% c("EN.ATM.CO2E.PC","EG.FEC.RNEW.ZS", "EG.ELC.RNEW.ZS","EG.EGY.PRIM.PP.KD","EG.USE.COMM.FO.ZS","EN.POP.DNST","AG.LND.AGRI.ZS","NV.AGR.TOTL.ZS","EG.ELC.ACCS.ZS","SP.DYN.LE00.IN","SI.DST.FRST.20","SI.POV.GINI","IT.NET.USER.ZS","GE.EST","AG.LND.FRST.ZS","GB.XPD.RSDV.GD.ZS","SE.PRM.ENRR"))
+esgdata_clean <- select(esgdata_clean,'Country Code','Country Name','Indicator Name','Indicator Code','1991','1992','1993','1994','1995','1996','1997','1998','1999','2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018')
+esgdataAll <- esgdata_clean %>%
+  rename(CountryCode="Country Code") %>% rename(CountryName="Country Name") %>% rename(IndicatorName="Indicator Name") %>% rename(IndicatorCode="Indicator Code")
+esgdataAll <- esgdataAll %>%
+  filter(!CountryCode %in% c("ARB","CEB","CSS","ECA","EAP","EAR","EAS","ECS","EMU","EUU","FCS","HIC","HPC","IBD","IBT","IDA","IDB","IDX","LDC","LCN","LIC","LAC","LMC","LMY","LTE","MIC","MEA","MNA","NAC","OED","OSS","PRE","PSS","PST","SAS","SSA","SSF","SST","TEA","TMN","TEC","TLA","TSA","TSS","UMC","WLD")) %>%
+  pivot_longer(-c('CountryCode','CountryName','IndicatorName','IndicatorCode'), names_to = 'Year', values_to = 'Values') %>% 
+  select(-`IndicatorName`) %>% 
+  pivot_wider(names_from='IndicatorCode',values_from = 'Values')
+esgdataAll <- esgdataAll %>%
+   rename(electricity="EG.ELC.ACCS.ZS") %>% rename(agroLand="AG.LND.AGRI.ZS") %>% rename(agroValue="NV.AGR.TOTL.ZS") %>% rename(co2="EN.ATM.CO2E.PC") %>% rename(energyIntensity="EG.EGY.PRIM.PP.KD") %>% rename(forestArea="AG.LND.FRST.ZS") %>% rename(fossilFuel="EG.USE.COMM.FO.ZS") %>% rename(gini="SI.POV.GINI") %>% rename(govtEfficacy="GE.EST") %>% rename(incomeLowest20="SI.DST.FRST.20") %>% rename(internet="IT.NET.USER.ZS") %>% rename(lifeExpectancy="SP.DYN.LE00.IN")  %>% rename(popDensity="EN.POP.DNST") %>% rename(renewableElec="EG.ELC.RNEW.ZS") %>% rename(renweableEnergy="EG.FEC.RNEW.ZS") %>% rename(research="GB.XPD.RSDV.GD.ZS") %>% rename(schoolEnroll="SE.PRM.ENRR")
+esgdataAll <- esgdataAll %>%
+  mutate(Year = as.numeric(Year))
+esgdataAll_sub <- esgdataAll %>% na.omit()
+esgdataAll_sub %>% purrr::map (~sum(is.na(.)))
+esgdata_cv10 <- vfold_cv(esgdataAll_sub, v = 10)  # 6 folds
+data_rec <- recipe(co2 ~ . , data = esgdataAll_sub) %>%
+  update_role(`CountryCode`,new_role = 'ID') %>%
+  update_role(`CountryName`,new_role = 'ID') %>%
+    step_nzv(all_predictors()) %>% # removes variables with the same value
+    step_normalize(all_numeric_predictors()) %>%  # important standardization step for LASSO
+    step_dummy(all_nominal_predictors())  # creates indicator variables for categorical variables
+data_rec %>% prep(esgdataAll_sub) %>%juice()
+```
+
+## Linear Model Recipe
+
+```{r}
+esg_rec <- recipe(co2 ~ . , data = esgdataAll_sub) %>%
+  update_role(`Year`,new_role = 'ID') %>%
+  update_role(`CountryCode`,new_role = 'ID') %>%
+  update_role(`CountryName`,new_role = 'ID') %>%
+    step_nzv(all_predictors()) %>% # removes variables with the same value
+    step_normalize(all_numeric_predictors()) %>%  # important standardization step for LASSO
+    step_dummy(all_nominal_predictors())  # creates indicator variables for categorical variables
+    
+esg_rec %>% prep(esgdataAll_sub) %>% juice()
+```
+
+## Linear Model Fit
+
+```{r}
+lm_spec <- 
+    linear_reg() %>% 
+    set_engine(engine = 'lm') %>% 
+    set_mode('regression')
+esg_model_wf1 <- workflow() %>%
+  add_recipe(esg_rec) %>% 
+  add_model(lm_spec)
+ 
+esg_fit_model1 <- esg_model_wf1 %>% 
+  fit(data = esgdataAll_sub)
+esg_fit_model1 %>% tidy() 
+```
+
+b.  Let's visualize the model evaluation metrics from tuning. We can use `autoplot()`.
+
+```{r}
+# Getting metrics
+cv_output <- fit_resamples( # new function for tuning parameters
+  esg_model_wf1, # workflow
+  resamples = esgdata_cv10, # cv folds
+  metrics = metric_set(rmse, mae)
+)
+cv_output %>% collect_metrics()
+# Residuals 
+esg_fit_model1_residuals <- bind_cols(esgdataAll_sub, esg_fit_model1 %>% 
+  predict(new_data = esgdataAll_sub)) %>%
+  mutate(resid = co2 - .pred)
+ggplot(esg_fit_model1_residuals, aes(x = .pred, y = resid)) +
+    geom_point() +
+    geom_smooth() +
+    geom_hline(yintercept = 0, color = "red") +
+    labs(x = "Fitted values", y = "Residuals") +
+    theme_classic()    # fit to the training data 
+```
+
+## LASSO Model
+
+```{r}
+data_rec <- recipe(co2 ~ . , data = esgdataAll_sub) %>%
+  update_role(`Year`,new_role = 'ID') %>%
+  update_role(`CountryCode`,new_role = 'ID') %>%
+  update_role(`CountryName`,new_role = 'ID') %>%
+    step_nzv(all_predictors()) %>% # removes variables with the same value
+    step_normalize(all_numeric_predictors()) %>%  # important standardization step for LASSO
+    step_dummy(all_nominal_predictors())  # creates indicator variables for categorical variables
+# Lasso Model Spec with tune
+lm_lasso_spec_tune <- 
+  linear_reg() %>%
+  set_args(mixture = 1, penalty = tune()) %>% ## mixture = 1 indicates Lasso
+  set_engine(engine = 'glmnet') %>% #note we are using a different engine
+  set_mode('regression') 
+# Workflow (Recipe + Model)
+lasso_wf_tune <- workflow() %>% 
+  add_recipe(data_rec) %>%
+  add_model(lm_lasso_spec_tune) 
+# Tune Model (trying a variety of values of Lambda penalty)
+penalty_grid <- grid_regular(
+  penalty(range = c(-3, 1)), #log10 transformed 
+  levels = 30)
+tune_output <- tune_grid( # new function for tuning hyperparameters
+  lasso_wf_tune, # workflow
+  resamples = esgdata_cv10, # cv folds
+  metrics = metric_set(rmse, mae),
+  grid = penalty_grid # penalty grid defined above
+)
+autoplot(tune_output) + theme_classic()
+```
+
+### Picking LASSO Penalty
+
+```{r}
+best_penalty <- select_best(tune_output, metric = 'mae') # choose penalty value based on lowest mae
+best_penalty
+best_se_penalty <- select_by_one_std_err(tune_output, metric = 'mae', desc(penalty)) # choose penalty value based on the largest penalty within 1 se of the lowest CV MAE
+best_se_penalty
+final_wf <- finalize_workflow(lasso_wf_tune, best_penalty) # incorporates penalty value to workflow
+final_wf_se <- finalize_workflow(lasso_wf_tune, best_se_penalty) # incorporates penalty value to workflow
+final_fit <- fit(final_wf, data = esgdataAll_sub)
+final_fit_se <- fit(final_wf_se, data = esgdataAll_sub)
+tidy(final_fit)
+tidy(final_fit_se)
+```
+
+```{r}
+glmnet_output <- final_fit_se %>% extract_fit_parsnip() %>% pluck('fit') # way to get the original glmnet output
+lambdas <- glmnet_output$lambda
+coefs_lambdas <- 
+  coefficients(glmnet_output, s = lambdas )  %>% 
+  as.matrix() %>%  
+  t() %>% 
+  as.data.frame() %>% 
+  mutate(lambda = lambdas ) %>% 
+  select(lambda, everything(), -`(Intercept)`) %>% 
+  pivot_longer(cols = -lambda, 
+               names_to = "term", 
+               values_to = "coef") %>%
+  mutate(var = map_chr(stringr::str_split(term,"_"),~.[1]))
+coefs_lambdas %>%
+  ggplot(aes(x = lambda, y = coef, group = term, color = var)) +
+  geom_line() +
+  geom_vline(xintercept = best_se_penalty %>% pull(penalty), linetype = 'dashed') + 
+  theme_classic() + 
+  theme(legend.position = "bottom", legend.text=element_text(size=8))
+# Create a boolean matrix (predictors x lambdas) of variable exclusion
+bool_predictor_exclude <- glmnet_output$beta==0
+# Loop over each variable
+var_imp <- sapply(seq_len(nrow(bool_predictor_exclude)), function(row) {
+    this_coeff_path <- bool_predictor_exclude[row,]
+    if(sum(this_coeff_path) == ncol(bool_predictor_exclude)){ return(0)}else{
+    return(ncol(bool_predictor_exclude) - which.min(this_coeff_path) + 1)}
+})
+# Create a dataset of this information and sort
+var_imp_data <- tibble(
+    var_name = rownames(bool_predictor_exclude),
+    var_imp = var_imp
+)
+var_imp_data %>% arrange(desc(var_imp))
+```
+
+```{r}
+final_fit_se %>% tidy() %>% filter(estimate != 0)
+tune_output %>% collect_metrics() %>% filter(penalty == (best_se_penalty %>% pull(penalty)))
+lasso_mod_out <- final_fit_se %>%
+    predict(new_data = esgdataAll_sub) %>%
+    bind_cols(esgdataAll_sub) %>%
+    mutate(resid = co2 - .pred)
+ggplot(esg_fit_model1_residuals, aes(x = .pred, y = resid)) +
+    geom_point() +
+    ggtitle('Linear Regression Final Model') +
+    geom_smooth() +
+    geom_hline(yintercept = 0, color = "red") +
+    labs(x = "Fitted values", y = "Residuals") +
+    theme_classic()    # fit to the training data 
+lasso_mod_out %>% 
+  ggplot(aes(x = .pred, y = resid)) + 
+  ggtitle('LASSO Final Model') +
+  geom_point() +
+  geom_smooth(se = FALSE) + 
+  geom_hline(yintercept = 0, color = "red") + 
+  theme_classic()
+```
+
+> lasso model shows which are important. now use these to model nonlinearity with smoothing splines/GAMs which variables are most important
+
+```{r}
+mean(esgdataAll_sub[["co2"]])
+esgdataAll_sub <- esgdataAll_sub %>%
+  mutate(CO2cat = if_else(esgdataAll_sub$co2 > 6.550097, 'high_co2','low_co2'))
+esgdataAll_sub <- esgdataAll_sub %>%
+  mutate(CO2cat = relevel(factor(CO2cat), ref= 'low_co2'))
+```
+
+### We will be using 6.550097 as the split for deciding if the country has high CO2 emissions or low CO2 emissions.
+
+#### Logistic Regression
+
+```{r}
+# Logistic Regression Model Spec
+logistic_spec <- logistic_reg() %>%
+    set_engine('glm') %>%
+    set_mode('classification')
+# Recipe
+logistic_rec <- recipe( CO2cat ~ ., data = esgdataAll_sub) %>%
+   update_role(`CountryCode`,new_role = 'ID') %>%
+    update_role(`CountryName`,new_role = 'ID') %>%
+    step_rm(co2) %>%
+    step_nzv(all_predictors()) %>% # removes variables with the same value
+    step_normalize(all_numeric_predictors()) %>%  # important standardization step for LASSO
+    step_dummy(all_nominal_predictors()) # creates indicator variables for categorical variables
+    
+# Workflow (Recipe + Model)
+log_wf <- workflow() %>% 
+    add_recipe(logistic_rec) %>%
+    add_model(logistic_spec) 
+# Fit Model to Training Data
+log_fit <- fit(log_wf, data = esgdataAll_sub)
+```
+
+**Examining the logistic model**
+
+```{r}
+# Print out Coefficients
+log_fit %>% tidy()
+# Get Exponentiated coefficients + CI
+log_fit %>% tidy() %>%
+  mutate(OR.conf.low = exp(estimate - 1.96*std.error), OR.conf.high = exp(estimate + 1.96*std.error)) %>% # do this first
+  mutate(OR = exp(estimate))
+```
+
+```{r}
+logistic_output <-  esgdataAll_sub %>%
+  bind_cols(predict(log_fit, new_data = esgdataAll_sub, type = 'prob')) 
+# Hard predictions (you pick threshold)
+logistic_output <- logistic_output %>%
+  mutate(.pred_class = make_two_class_pred(.pred_low_co2, levels(CO2cat), threshold = .5)) #Try changing threshold (.5, 0, 1, .2, .8)
+# Visualize Soft Predictions
+logistic_output %>%
+  ggplot(aes(x = CO2cat, y = .pred_low_co2)) +
+  geom_boxplot() + 
+  geom_hline(yintercept = 0.5, color='red') +  # try changing threshold
+  labs(y = 'Predicted Probability of Outcome', x = 'Observed Outcome') +
+  theme_classic()
+logistic_output %>%
+  conf_mat(truth = CO2cat, estimate = .pred_class)
+log_metrics <- metric_set(sens, yardstick::spec, accuracy) # these metrics are based on hard predictions
+#sens: sensitivity = chance of correctly predicting second level, given second level (Yes)
+#spec: specificity = chance of correctly predicting first level, given first level (No)
+#accuracy: accuracy = chance of correctly predicting outcome
+logistic_output %>% 
+  log_metrics(estimate = .pred_class, truth = CO2cat, event_level = "second") # set second level of outcome as "success"
+```
+
+```{r}
+logistic_output <-  esgdataAll_sub %>%
+  bind_cols(predict(log_fit, new_data = esgdataAll_sub, type = 'prob')) 
+logistic_roc <- logistic_output %>% 
+    roc_curve(CO2cat, .pred_high_co2, event_level = "second") # set second level of outcome as "success"
+autoplot(logistic_roc) + theme_classic()
+set.seed(123)
+esgdataAll_sub_cv10 <- vfold_cv(esgdataAll_sub, v = 10)
+# CV Fit Model
+log_cv_fit <- fit_resamples(
+    log_wf, 
+    resamples = esgdataAll_sub_cv10,
+    metrics = metric_set(sens, yardstick::spec, accuracy, roc_auc),
+    control = control_resamples(save_pred = TRUE, event_level = 'second'))  # you need predictions for ROC calculations
+collect_metrics(log_cv_fit) #default threshold is 0.5
+```
+
+# tree
+
+```{r}
+set.seed(726) # don't change this
+
+ct_spec_tune <- decision_tree() %>%
+  set_engine(engine = 'rpart') %>%
+  set_args(cost_complexity = tune(),  
+           min_n = 2, 
+           tree_depth = NULL) %>% 
+  set_mode('classification') 
+
+data_rec <- recipe(CO2cat ~ ., data = esgdataAll_sub) %>%
+    update_role(`CountryCode`,new_role = 'ID') %>%
+    update_role(`CountryName`,new_role = 'ID') %>%
+    step_rm(co2) %>%
+    step_nzv(all_predictors()) %>% # removes variables with the same value
+    step_dummy(all_nominal_predictors())  # creates indicator variables for categorical variables
+
+data_wf_tune <- workflow() %>%
+  add_model(ct_spec_tune) %>%
+  add_recipe(data_rec)
+
+param_grid <- grid_regular(cost_complexity(range = c(-5, 1)), levels = 10) 
+
+tune_res <- tune_grid(
+  data_wf_tune, 
+  resamples = esgdataAll_sub_cv10, 
+  grid = param_grid, 
+  metrics = metric_set(accuracy) #change this for regression trees
+)
+```
+
+```{r}
+tree_mod_highcp <- fit(
+    data_wf_tune %>%
+        update_model(ct_spec_tune %>% set_args(cost_complexity = .01)),
+    data = esgdataAll_sub
+)
+
+tree_mod_highcp %>% extract_fit_engine() %>% rpart.plot()
+```
+
+#random forest
+
+```{r}
+# Model Specification
+rf_spec <- rand_forest() %>%
+  set_engine(engine = 'ranger') %>% 
+  set_args(mtry = NULL, # size of random subset of variables; default is floor(sqrt(number of total predictors))
+           trees = 1000, # Number of trees
+           min_n = 2,
+           probability = FALSE, # FALSE: get hard predictions (not needed for regression)
+           importance = 'impurity') %>% # we'll come back to this at the end
+  set_mode('classification') # change this for regression
+# Recipe
+data_rec_rf <- recipe(CO2cat ~ ., data = esgdataAll_sub) %>%
+  update_role(`CountryCode`,new_role = 'ID') %>%
+    update_role(`CountryName`,new_role = 'ID') %>%
+    step_rm(co2) %>%
+    step_nzv(all_predictors()) %>% # removes variables with the same value
+    step_dummy(all_nominal_predictors())  # creates indicator variables for categorical variables
+# Workflows
+data_wf_mtry2 <- workflow() %>%
+  add_model(rf_spec %>% set_args(mtry = 2)) %>%
+  add_recipe(data_rec_rf)
+## Create workflows for mtry = 4, 9, and 17
+data_wf_mtry4 <- workflow() %>%
+  add_model(rf_spec %>% set_args(mtry = 4)) %>%
+  add_recipe(data_rec_rf)
+data_wf_mtry9 <- workflow() %>%
+  add_model(rf_spec %>% set_args(mtry = 9)) %>%
+  add_recipe(data_rec_rf)
+data_wf_mtry17 <- workflow() %>%
+  add_model(rf_spec %>% set_args(mtry = 17)) %>%
+  add_recipe(data_rec_rf)
+```
+
+```{r}
+set.seed(726) # make sure to run this before each fit so that you have the same 1000 trees
+data_fit_mtry2 <- fit(data_wf_mtry2, data = esgdataAll_sub)
+set.seed(726)
+data_fit_mtry4 <- fit(data_wf_mtry4, data = esgdataAll_sub)
+set.seed(726) 
+data_fit_mtry9 <- fit(data_wf_mtry9, data = esgdataAll_sub)
+set.seed(726)
+data_fit_mtry17 <- fit(data_wf_mtry17, data = esgdataAll_sub)
+```
+
+```{r}
+rf_OOB_output <- function(fit_model, model_label, truth){
+    tibble(
+          .pred_class = fit_model %>% extract_fit_engine() %>% pluck('predictions'), #OOB predictions
+          class = truth,
+          model = model_label
+      )
+}
+#check out the function output
+rf_OOB_output(data_fit_mtry2,'mtry2', esgdataAll_sub %>% pull(CO2cat))
+```
+
+```{r}
+data_rf_OOB_output <- bind_rows(
+    rf_OOB_output(data_fit_mtry2,'mtry2', esgdataAll_sub %>% pull(CO2cat)),
+    rf_OOB_output(data_fit_mtry4,'mtry4', esgdataAll_sub %>% pull(CO2cat)),
+    rf_OOB_output(data_fit_mtry9,'mtry9', esgdataAll_sub %>% pull(CO2cat)),
+    rf_OOB_output(data_fit_mtry17,'mtry17', esgdataAll_sub %>% pull(CO2cat))
+)
+data_rf_OOB_output %>% 
+    group_by(model) %>%
+    accuracy(truth = class, estimate = .pred_class)
+```
+
+```{r}
+data_rf_OOB_output %>% 
+    group_by(model) %>%
+    accuracy(truth = class, estimate = .pred_class) %>%
+  mutate(mtry = as.numeric(stringr::str_replace(model,'mtry',''))) %>%
+  ggplot(aes(x = mtry, y = .estimate )) + 
+  geom_point() +
+  geom_line() +
+  theme_classic()
+```
+
+```{r}
+rf_OOB_output(data_fit_mtry9,'mtry9', esgdataAll_sub %>% pull(CO2cat)) %>%
+    conf_mat(truth = class, estimate= .pred_class)
+```
+
+```{r}
+data_fit_mtry9 %>% 
+    extract_fit_engine() %>% 
+    vip(num_features = 30) + theme_classic() #based on impurity
+```
+
+## Clustering
+
+```{r}
+ggplot(esgdataAll_sub,aes(co2,research)) +
+  geom_point()
+ggplot(esgdataAll_sub,aes(co2,lifeExpectancy)) +
+    geom_point()
+SUB = esgdataAll_sub %>%
+  select(co2,electricity,agroLand,co2,research,lifeExpectancy)
+set.seed(123)
+kclust_k3 <- kmeans(scale(SUB), centers = 3)
+esgdataAll_sub <- esgdataAll_sub %>%
+    mutate(kclust_3 = factor(kclust_k3$cluster))
+ggplot(esgdataAll_sub,aes(co2,lifeExpectancy,color=kclust_3)) +
+    geom_point()
+ggplot(esgdataAll_sub,aes(co2,research,color=kclust_3)) +
+    geom_point()
+esgdataAll_sub %>%
+    group_by(kclust_3) %>%
+    summarize(across(c(co2, research, lifeExpectancy), mean))
+esgdataAll_sub %>%
+  count(kclust_3, CountryName)
+set.seed(123)
+kclust_k5 <- kmeans(scale(SUB),centers = 5)
+esgdataAll_sub <- esgdataAll_sub %>%
+    mutate(kclust_5 = factor(kclust_k5$cluster))
+ggplot(esgdataAll_sub,aes(co2,lifeExpectancy,color=kclust_5)) +
+    geom_point()
+ggplot(esgdataAll_sub,aes(co2,research,color=kclust_5)) +
+    geom_point()
+esgdataAll_sub %>%
+    group_by(kclust_5) %>%
+    summarize(across(c(co2, research, lifeExpectancy), mean))
+esgdataAll_sub %>%
+  count(kclust_5, CountryName)
+```
