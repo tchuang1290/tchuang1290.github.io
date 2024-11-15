@@ -1,0 +1,19 @@
+---
+title: "CO2 Levels in 20 Major Countries"
+image: tree.png
+image-alt: Graphic displaying residuals for final OLS model
+categories:
+  - Machine Learning
+  - R
+about:
+  template: solana
+  image: tree.png
+---
+
+Completed as final project for STAT 253 "Statistical Machine Learning" at Macalester College with Ayaa Asoba and Julia Coelho
+
+Presentation: <https://docs.google.com/presentation/d/1cRzZPT1LijIIKyGGKAEzkKDYWMsYUf22/edit?usp=sharing&ouid=116188639352950574208&rtpof=true&sd=true>
+
+RMarkdown HTML: <file:///Users/ting-chienhuang/tchuang1290.github.io/projects/CO2/Final-Project-Draft.html>
+
+Github: <https://github.com/tchuang1290/StatMLFinalProj>
