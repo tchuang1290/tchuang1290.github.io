@@ -3,11 +3,11 @@
     "projects.qmd": [
       "projects"
     ],
-    "coursework.qmd": [
-      "coursework"
-    ],
     "other.qmd": [
       "other"
+    ],
+    "coursework.qmd": [
+      "coursework"
     ]
   }
 }

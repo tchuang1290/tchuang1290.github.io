@@ -15,3 +15,5 @@ Completed as final project for STAT 253 "Statistical Machine Learning" at Macale
 Presentation: <https://docs.google.com/presentation/d/1cRzZPT1LijIIKyGGKAEzkKDYWMsYUf22/edit?usp=sharing&ouid=116188639352950574208&rtpof=true&sd=true>
 
 Github: <https://github.com/tchuang1290/StatMLFinalProj>
+
+RMD: [Final Code Appendix](~/tchuang1290.github.io/Rmd/Final_Code_Appendix_Ayaa_Julia_Ting.Rmd)

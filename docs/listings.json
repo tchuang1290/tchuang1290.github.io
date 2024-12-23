@@ -1,5 +1,12 @@
 [
   {
+    "listing": "/coursework.html",
+    "items": [
+      "/coursework/Advanced Regression Techniques/Advanced_Regression_Techniques.html",
+      "/coursework/Machine Learning with Python and SciKit Learn/SciKit_Learn.html"
+    ]
+  },
+  {
     "listing": "/projects.html",
     "items": [
       "/projects/Personality/Personality.html",
@@ -7,13 +14,6 @@
       "/projects/CO2/CO2.html",
       "/projects/Survival/Survival_Analysis.html",
       "/projects/Renewable Energy/Renewable_Energy.html"
-    ]
-  },
-  {
-    "listing": "/coursework.html",
-    "items": [
-      "/coursework/Advanced Regression Techniques/Advanced_Regression_Techniques.html",
-      "/coursework/Machine Learning with Python and SciKit Learn/SciKit_Learn.html"
     ]
   },
   {
