@@ -16,4 +16,4 @@ Presentation: <https://docs.google.com/presentation/d/1cRzZPT1LijIIKyGGKAEzkKDYW
 
 Github: <https://github.com/tchuang1290/StatMLFinalProj>
 
-RMD: [Final Code Appendix](FinalCodeAppendix/Final_Code_Appendix_Ayaa_Julia_Ting.Rmd)
+RMD: [Final Code Appendix](../../Rmd/Final_Code_Appendix_Ayaa_Julia_Ting.Rmd)

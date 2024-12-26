@@ -7,9 +7,6 @@ listing:
   categories: true
   sort-ui: true
   filter-ui: true
-  exclude:
-    title: 
-      - "Ayaa Asoba, Julia Coelho, Ting Huang stat253_project"
 page-layout: full
 title-block-banner: true
 comments: false
