@@ -195,8 +195,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'survival' was built under R version 4.3.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'dplyr'</code></pre>
@@ -211,24 +214,24 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define column names for easy indexing</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>index_names <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'unit_nr'</span>, <span class="st">'time_cycles'</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>setting_names <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'altitude'</span>, <span class="st">'mach'</span>, <span class="st">'TRA'</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>sensor_names <span class="ot">=</span> <span class="fu">c</span>()</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">21</span>) {</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  name <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"s_"</span>, i)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  sensor_names[i] <span class="ot">=</span> name</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>col_names <span class="ot">=</span> <span class="fu">c</span>(index_names,setting_names,sensor_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define column names for easy indexing</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>index_names <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'unit_nr'</span>, <span class="st">'time_cycles'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>setting_names <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'altitude'</span>, <span class="st">'mach'</span>, <span class="st">'TRA'</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>sensor_names <span class="ot">=</span> <span class="fu">c</span>()</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">21</span>) {</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  name <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"s_"</span>, i)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  sensor_names[i] <span class="ot">=</span> name</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>col_names <span class="ot">=</span> <span class="fu">c</span>(index_names,setting_names,sensor_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"train_FD001.txt"</span>, <span class="at">col.names =</span> col_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"train_FD001.txt"</span>, <span class="at">col.names =</span> col_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    unit_nr        time_cycles       altitude              mach           
  Min.   :  1.00   Min.   :  1.0   Min.   :-8.70e-03   Min.   :-6.000e-04  
@@ -275,19 +278,19 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> data1<span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(unit_nr) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">max_cycle =</span> <span class="fu">max</span>(time_cycles)) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">RUL =</span> max_cycle<span class="sc">-</span>time_cycles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> data1<span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(unit_nr) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">max_cycle =</span> <span class="fu">max</span>(time_cycles)) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">RUL =</span> max_cycle<span class="sc">-</span>time_cycles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(unit_nr) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">r =</span> <span class="fu">max</span>(RUL)) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> r), <span class="at">bins =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Number of Failures of Turbofan Jet Engines over Time"</span>, <span class="at">x =</span> <span class="st">"Time Cycles"</span>) <span class="sc">+</span> </span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(unit_nr) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">r =</span> <span class="fu">max</span>(RUL)) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> r), <span class="at">bins =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Number of Failures of Turbofan Jet Engines over Time"</span>, <span class="at">x =</span> <span class="st">"Time Cycles"</span>) <span class="sc">+</span> </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -297,16 +300,16 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">=</span> <span class="fu">apply</span>(data1[,<span class="fu">c</span>(<span class="st">'s_1'</span>,<span class="st">'s_2'</span>,<span class="st">'s_3'</span>,<span class="st">'s_4'</span>,<span class="st">'s_5'</span>,<span class="st">'s_6'</span>,<span class="st">'s_7'</span>,<span class="st">'s_8'</span>,<span class="st">'s_9'</span>,<span class="st">'s_10'</span>,<span class="st">'s_11'</span>,<span class="st">'s_12'</span>,<span class="st">'s_13'</span>,<span class="st">'s_14'</span>,<span class="st">'s_15'</span>,<span class="st">'s_16'</span>,<span class="st">'s_17'</span>,<span class="st">'s_18'</span>,<span class="st">'s_19'</span>,<span class="st">'s_20'</span>,<span class="st">'s_21'</span>)],<span class="dv">2</span>,sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">=</span> <span class="fu">apply</span>(data1[,<span class="fu">c</span>(<span class="st">'s_1'</span>,<span class="st">'s_2'</span>,<span class="st">'s_3'</span>,<span class="st">'s_4'</span>,<span class="st">'s_5'</span>,<span class="st">'s_6'</span>,<span class="st">'s_7'</span>,<span class="st">'s_8'</span>,<span class="st">'s_9'</span>,<span class="st">'s_10'</span>,<span class="st">'s_11'</span>,<span class="st">'s_12'</span>,<span class="st">'s_13'</span>,<span class="st">'s_14'</span>,<span class="st">'s_15'</span>,<span class="st">'s_16'</span>,<span class="st">'s_17'</span>,<span class="st">'s_18'</span>,<span class="st">'s_19'</span>,<span class="st">'s_20'</span>,<span class="st">'s_21'</span>)],<span class="dv">2</span>,sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tab1 <span class="ot">=</span> <span class="fu">matrix</span>(t1, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tab1) <span class="ot">=</span> <span class="st">"SD"</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tab1) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'s_1'</span>,<span class="st">'s_2'</span>,<span class="st">'s_3'</span>,<span class="st">'s_4'</span>,<span class="st">'s_5'</span>,<span class="st">'s_6'</span>,<span class="st">'s_7'</span>,<span class="st">'s_8'</span>,<span class="st">'s_9'</span>,<span class="st">'s_10'</span>,<span class="st">'s_11'</span>,<span class="st">'s_12'</span>,<span class="st">'s_13'</span>,<span class="st">'s_14'</span>,<span class="st">'s_15'</span>,<span class="st">'s_16'</span>,<span class="st">'s_17'</span>,<span class="st">'s_18'</span>,<span class="st">'s_19'</span>,<span class="st">'s_20'</span>,<span class="st">'s_21'</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>tab1 <span class="ot">=</span> <span class="fu">as.table</span>(tab1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tab1 <span class="ot">=</span> <span class="fu">matrix</span>(t1, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tab1) <span class="ot">=</span> <span class="st">"SD"</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tab1) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'s_1'</span>,<span class="st">'s_2'</span>,<span class="st">'s_3'</span>,<span class="st">'s_4'</span>,<span class="st">'s_5'</span>,<span class="st">'s_6'</span>,<span class="st">'s_7'</span>,<span class="st">'s_8'</span>,<span class="st">'s_9'</span>,<span class="st">'s_10'</span>,<span class="st">'s_11'</span>,<span class="st">'s_12'</span>,<span class="st">'s_13'</span>,<span class="st">'s_14'</span>,<span class="st">'s_15'</span>,<span class="st">'s_16'</span>,<span class="st">'s_17'</span>,<span class="st">'s_18'</span>,<span class="st">'s_19'</span>,<span class="st">'s_20'</span>,<span class="st">'s_21'</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>tab1 <span class="ot">=</span> <span class="fu">as.table</span>(tab1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tab1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tab1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               SD
 s_1   0.000000000
@@ -333,24 +336,24 @@ s_21  0.108250875</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> data1 <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">breakdown =</span> <span class="fu">ifelse</span>(time_cycles <span class="sc">==</span> max_cycle,</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">yes =</span> <span class="dv">1</span>,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">no =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> data1 <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">breakdown =</span> <span class="fu">ifelse</span>(time_cycles <span class="sc">==</span> max_cycle,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">yes =</span> <span class="dv">1</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">no =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> data1 <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">start =</span> time_cycles<span class="dv">-1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> data1 <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">start =</span> time_cycles<span class="dv">-1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data_n <span class="ot">&lt;-</span> data1 <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(breakdown <span class="sc">==</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>data_n <span class="ot">&lt;-</span> data1 <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(breakdown <span class="sc">==</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>KM1 <span class="ot">=</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(time_cycles)<span class="sc">~</span><span class="dv">1</span>, <span class="at">data =</span> data_n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>KM1 <span class="ot">=</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(time_cycles)<span class="sc">~</span><span class="dv">1</span>, <span class="at">data =</span> data_n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(KM1, <span class="at">ylab =</span> <span class="st">"Survival Proportion"</span>, <span class="at">xlab =</span> <span class="st">"Time Cycles"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(KM1, <span class="at">ylab =</span> <span class="st">"Survival Proportion"</span>, <span class="at">xlab =</span> <span class="st">"Time Cycles"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -362,7 +365,7 @@ s_21  0.108250875</code></pre>
 <section id="time-varying-stuff" class="level3">
 <h3 class="anchored" data-anchor-id="time-varying-stuff">Time-Varying Stuff</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_9, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_9, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 coxph(formula = Surv(start, time_cycles, breakdown) ~ s_9, data = data1)
@@ -375,7 +378,7 @@ n= 20631, number of events= 100 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_9 <span class="sc">+</span> s_9<span class="sc">:</span>time_cycles, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_9 <span class="sc">+</span> s_9<span class="sc">:</span>time_cycles, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in coxph(Surv(start, time_cycles, breakdown) ~ s_9 + s_9:time_cycles, :
 a variable appears on both the left and right sides of the formula</code></pre>
@@ -394,7 +397,7 @@ n= 20631, number of events= 100 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_14, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_14, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 coxph(formula = Surv(start, time_cycles, breakdown) ~ s_14, data = data1)
@@ -407,7 +410,7 @@ n= 20631, number of events= 100 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_14 <span class="sc">+</span> s_14<span class="sc">:</span>time_cycles, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_14 <span class="sc">+</span> s_14<span class="sc">:</span>time_cycles, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in coxph(Surv(start, time_cycles, breakdown) ~ s_14 + s_14:time_cycles,
 : a variable appears on both the left and right sides of the formula</code></pre>
@@ -426,7 +429,7 @@ n= 20631, number of events= 100 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_4, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_4, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 coxph(formula = Surv(start, time_cycles, breakdown) ~ s_4, data = data1)
@@ -439,7 +442,7 @@ n= 20631, number of events= 100 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_4 <span class="sc">+</span> s_4<span class="sc">:</span>time_cycles, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_4 <span class="sc">+</span> s_4<span class="sc">:</span>time_cycles, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in coxph(Surv(start, time_cycles, breakdown) ~ s_4 + s_4:time_cycles, :
 a variable appears on both the left and right sides of the formula</code></pre>
@@ -462,7 +465,7 @@ n= 20631, number of events= 100 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_3, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_3, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 coxph(formula = Surv(start, time_cycles, breakdown) ~ s_3, data = data1)
@@ -475,7 +478,7 @@ n= 20631, number of events= 100 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_3 <span class="sc">+</span> s_3<span class="sc">:</span>time_cycles, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_3 <span class="sc">+</span> s_3<span class="sc">:</span>time_cycles, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in coxph(Surv(start, time_cycles, breakdown) ~ s_3 + s_3:time_cycles, :
 a variable appears on both the left and right sides of the formula</code></pre>
@@ -494,7 +497,7 @@ n= 20631, number of events= 100 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_11, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_11, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 coxph(formula = Surv(start, time_cycles, breakdown) ~ s_11, data = data1)
@@ -507,7 +510,7 @@ n= 20631, number of events= 100 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_11 <span class="sc">+</span> s_11<span class="sc">:</span>time_cycles, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_11 <span class="sc">+</span> s_11<span class="sc">:</span>time_cycles, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in coxph(Surv(start, time_cycles, breakdown) ~ s_11 + s_11:time_cycles,
 : a variable appears on both the left and right sides of the formula</code></pre>
@@ -526,7 +529,7 @@ n= 20631, number of events= 100 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_17 <span class="sc">+</span> s_11 <span class="sc">+</span> s_4 <span class="sc">+</span> s_9 <span class="sc">+</span> s_3, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_17 <span class="sc">+</span> s_11 <span class="sc">+</span> s_4 <span class="sc">+</span> s_9 <span class="sc">+</span> s_3, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 coxph(formula = Surv(start, time_cycles, breakdown) ~ s_17 + 
@@ -544,7 +547,7 @@ n= 20631, number of events= 100 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_3 <span class="sc">+</span> s_4 <span class="sc">+</span> s_9 <span class="sc">+</span> s_11, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_3 <span class="sc">+</span> s_4 <span class="sc">+</span> s_9 <span class="sc">+</span> s_11, <span class="at">data =</span> data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 coxph(formula = Surv(start, time_cycles, breakdown) ~ s_3 + s_4 + 
@@ -561,11 +564,11 @@ n= 20631, number of events= 100 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>tab2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">5.713e-02</span>, <span class="fl">1.25855</span>, <span class="fl">0.0448</span>, <span class="fl">2.302e-01</span>, <span class="fl">1.259e+00</span>, <span class="fl">1.14e-15</span>, <span class="fl">5.227e-03</span>, <span class="fl">1.005e+00</span>, <span class="fl">0.0434</span>, <span class="fl">6.415e+00</span>, <span class="fl">6.109e+02</span>, <span class="fl">1.64e-11</span>), <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tab2) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"coef"</span>, <span class="st">"exp(coef)"</span>, <span class="st">"p-value"</span>)</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tab2) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'Sensor 3'</span>,<span class="st">'Sensor 4'</span>,<span class="st">'Sensor 9'</span>,<span class="st">'Sensor 11'</span>)</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>tab2 <span class="ot">=</span> <span class="fu">as.table</span>(tab2)</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>tab2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>tab2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">5.713e-02</span>, <span class="fl">1.25855</span>, <span class="fl">0.0448</span>, <span class="fl">2.302e-01</span>, <span class="fl">1.259e+00</span>, <span class="fl">1.14e-15</span>, <span class="fl">5.227e-03</span>, <span class="fl">1.005e+00</span>, <span class="fl">0.0434</span>, <span class="fl">6.415e+00</span>, <span class="fl">6.109e+02</span>, <span class="fl">1.64e-11</span>), <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tab2) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"coef"</span>, <span class="st">"exp(coef)"</span>, <span class="st">"p-value"</span>)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tab2) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'Sensor 3'</span>,<span class="st">'Sensor 4'</span>,<span class="st">'Sensor 9'</span>,<span class="st">'Sensor 11'</span>)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>tab2 <span class="ot">=</span> <span class="fu">as.table</span>(tab2)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>tab2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                 coef   exp(coef)     p-value
 Sensor 3  5.71300e-02 1.25855e+00 4.48000e-02
@@ -575,11 +578,11 @@ Sensor 11 6.41500e+00 6.10900e+02 1.64000e-11</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>tab3 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">4.884e-02</span>, <span class="fl">1.050e+00</span>, <span class="fl">0.0885</span>, <span class="fl">2.257e-01</span>, <span class="fl">1.253e+00</span>, <span class="fl">2.98e-14</span>, <span class="fl">5.505e-04</span>, <span class="fl">1.001e+00</span>, <span class="fl">0.8455</span>, <span class="fl">6.036e+00</span>, <span class="fl">4.182e+02</span>, <span class="fl">1.25e-09</span>, <span class="fl">5.157e-01</span>, <span class="fl">1.675e+00</span>, <span class="fl">4.47e-05</span>), <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tab3) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"coef"</span>, <span class="st">"exp(coef)"</span>, <span class="st">"p-value"</span>)</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tab3) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'Sensor 3'</span>,<span class="st">'Sensor 4'</span>,<span class="st">'Sensor 9'</span>,<span class="st">'Sensor 11'</span>, <span class="st">'Sensor 17'</span>)</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>tab3 <span class="ot">=</span> <span class="fu">as.table</span>(tab3)</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>tab3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>tab3 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">4.884e-02</span>, <span class="fl">1.050e+00</span>, <span class="fl">0.0885</span>, <span class="fl">2.257e-01</span>, <span class="fl">1.253e+00</span>, <span class="fl">2.98e-14</span>, <span class="fl">5.505e-04</span>, <span class="fl">1.001e+00</span>, <span class="fl">0.8455</span>, <span class="fl">6.036e+00</span>, <span class="fl">4.182e+02</span>, <span class="fl">1.25e-09</span>, <span class="fl">5.157e-01</span>, <span class="fl">1.675e+00</span>, <span class="fl">4.47e-05</span>), <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tab3) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"coef"</span>, <span class="st">"exp(coef)"</span>, <span class="st">"p-value"</span>)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tab3) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'Sensor 3'</span>,<span class="st">'Sensor 4'</span>,<span class="st">'Sensor 9'</span>,<span class="st">'Sensor 11'</span>, <span class="st">'Sensor 17'</span>)</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>tab3 <span class="ot">=</span> <span class="fu">as.table</span>(tab3)</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>tab3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               coef exp(coef)   p-value
 Sensor 3  4.884e-02 1.050e+00 8.850e-02
@@ -590,14 +593,14 @@ Sensor 17 5.157e-01 1.675e+00 4.470e-05</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>data1a <span class="ot">=</span> data1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>data1a <span class="ot">=</span> data1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_9lag <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">NA</span>, data1a<span class="sc">$</span>s_9[<span class="sc">-</span><span class="fu">nrow</span>(data1a)])</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_9lag[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">duplicated</span>(data1a<span class="sc">$</span>unit_nr))] <span class="ot">=</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_9lag <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">NA</span>, data1a<span class="sc">$</span>s_9[<span class="sc">-</span><span class="fu">nrow</span>(data1a)])</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_9lag[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">duplicated</span>(data1a<span class="sc">$</span>unit_nr))] <span class="ot">=</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>data1a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>data1a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20,631 × 31
 # Groups:   unit_nr [100]
@@ -621,23 +624,23 @@ Sensor 17 5.157e-01 1.675e+00 4.470e-05</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_11lag <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">NA</span>, data1a<span class="sc">$</span>s_11[<span class="sc">-</span><span class="fu">nrow</span>(data1a)])</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_11lag[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">duplicated</span>(data1a<span class="sc">$</span>unit_nr))] <span class="ot">=</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_11lag <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">NA</span>, data1a<span class="sc">$</span>s_11[<span class="sc">-</span><span class="fu">nrow</span>(data1a)])</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_11lag[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">duplicated</span>(data1a<span class="sc">$</span>unit_nr))] <span class="ot">=</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_4lag <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">NA</span>, data1a<span class="sc">$</span>s_4[<span class="sc">-</span><span class="fu">nrow</span>(data1a)])</span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_4lag[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">duplicated</span>(data1a<span class="sc">$</span>unit_nr))] <span class="ot">=</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_4lag <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">NA</span>, data1a<span class="sc">$</span>s_4[<span class="sc">-</span><span class="fu">nrow</span>(data1a)])</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_4lag[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">duplicated</span>(data1a<span class="sc">$</span>unit_nr))] <span class="ot">=</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_3lag <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">NA</span>, data1a<span class="sc">$</span>s_3[<span class="sc">-</span><span class="fu">nrow</span>(data1a)])</span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_3lag[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">duplicated</span>(data1a<span class="sc">$</span>unit_nr))] <span class="ot">=</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_3lag <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">NA</span>, data1a<span class="sc">$</span>s_3[<span class="sc">-</span><span class="fu">nrow</span>(data1a)])</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_3lag[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">duplicated</span>(data1a<span class="sc">$</span>unit_nr))] <span class="ot">=</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_17lag <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">NA</span>, data1a<span class="sc">$</span>s_17[<span class="sc">-</span><span class="fu">nrow</span>(data1a)])</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_17lag[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">duplicated</span>(data1a<span class="sc">$</span>unit_nr))] <span class="ot">=</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_17lag <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">NA</span>, data1a<span class="sc">$</span>s_17[<span class="sc">-</span><span class="fu">nrow</span>(data1a)])</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>data1a<span class="sc">$</span>s_17lag[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">duplicated</span>(data1a<span class="sc">$</span>unit_nr))] <span class="ot">=</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_11lag <span class="sc">+</span> s_4lag <span class="sc">+</span> s_3lag <span class="sc">+</span> s_9lag <span class="sc">+</span> s_17lag, <span class="at">data =</span> data1a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coxph</span>(<span class="fu">Surv</span>(start, time_cycles, breakdown) <span class="sc">~</span> s_11lag <span class="sc">+</span> s_4lag <span class="sc">+</span> s_3lag <span class="sc">+</span> s_9lag <span class="sc">+</span> s_17lag, <span class="at">data =</span> data1a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 coxph(formula = Surv(start, time_cycles, breakdown) ~ s_11lag + 
@@ -656,11 +659,11 @@ n= 20531, number of events= 100
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>tab4 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">7.404e-02</span>, <span class="fl">1.077e+00</span>, <span class="fl">0.0125</span>, <span class="fl">1.562e-01</span>, <span class="fl">1.169e+00</span>, <span class="fl">3.22e-08</span>, <span class="fl">4.999e-03</span>, <span class="fl">1.005e+00</span>, <span class="fl">0.0533</span>, <span class="fl">8.460e+00</span>, <span class="fl">4.722e+03</span>, <span class="fl">2.76e-16</span>), <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tab4) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"coef"</span>, <span class="st">"exp(coef)"</span>, <span class="st">"p-value"</span>)</span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tab4) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'Sensor 3'</span>,<span class="st">'Sensor 4'</span>,<span class="st">'Sensor 9'</span>,<span class="st">'Sensor 11'</span>)</span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>tab4 <span class="ot">=</span> <span class="fu">as.table</span>(tab4)</span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>tab4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>tab4 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">7.404e-02</span>, <span class="fl">1.077e+00</span>, <span class="fl">0.0125</span>, <span class="fl">1.562e-01</span>, <span class="fl">1.169e+00</span>, <span class="fl">3.22e-08</span>, <span class="fl">4.999e-03</span>, <span class="fl">1.005e+00</span>, <span class="fl">0.0533</span>, <span class="fl">8.460e+00</span>, <span class="fl">4.722e+03</span>, <span class="fl">2.76e-16</span>), <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tab4) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"coef"</span>, <span class="st">"exp(coef)"</span>, <span class="st">"p-value"</span>)</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tab4) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'Sensor 3'</span>,<span class="st">'Sensor 4'</span>,<span class="st">'Sensor 9'</span>,<span class="st">'Sensor 11'</span>)</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>tab4 <span class="ot">=</span> <span class="fu">as.table</span>(tab4)</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>tab4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               coef exp(coef)   p-value
 Sensor 3  7.404e-02 1.077e+00 1.250e-02
@@ -670,11 +673,11 @@ Sensor 11 8.460e+00 4.722e+03 2.760e-16</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>tab5 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">7.274e-02</span>, <span class="fl">1.075e+00</span>, <span class="fl">0.0149</span>, <span class="fl">1.454e-01</span>, <span class="fl">1.156e+00</span>, <span class="fl">4.64e-07</span>, <span class="fl">3.127e-03</span>, <span class="fl">1.003e+00</span>, <span class="fl">0.2491</span>, <span class="fl">8.318e+00</span>, <span class="fl">4.097e+03</span>, <span class="fl">5.41e-15</span>, <span class="fl">2.633e-01</span>, <span class="fl">1.301e+00</span>, <span class="fl">0.0327</span>), <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tab5) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"coef"</span>, <span class="st">"exp(coef)"</span>, <span class="st">"p-value"</span>)</span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tab5) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'Sensor 3'</span>,<span class="st">'Sensor 4'</span>,<span class="st">'Sensor 9'</span>,<span class="st">'Sensor 11'</span>, <span class="st">'Sensor 17'</span>)</span>
-<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>tab5 <span class="ot">=</span> <span class="fu">as.table</span>(tab5)</span>
-<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>tab5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>tab5 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">7.274e-02</span>, <span class="fl">1.075e+00</span>, <span class="fl">0.0149</span>, <span class="fl">1.454e-01</span>, <span class="fl">1.156e+00</span>, <span class="fl">4.64e-07</span>, <span class="fl">3.127e-03</span>, <span class="fl">1.003e+00</span>, <span class="fl">0.2491</span>, <span class="fl">8.318e+00</span>, <span class="fl">4.097e+03</span>, <span class="fl">5.41e-15</span>, <span class="fl">2.633e-01</span>, <span class="fl">1.301e+00</span>, <span class="fl">0.0327</span>), <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tab5) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"coef"</span>, <span class="st">"exp(coef)"</span>, <span class="st">"p-value"</span>)</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tab5) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'Sensor 3'</span>,<span class="st">'Sensor 4'</span>,<span class="st">'Sensor 9'</span>,<span class="st">'Sensor 11'</span>, <span class="st">'Sensor 17'</span>)</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>tab5 <span class="ot">=</span> <span class="fu">as.table</span>(tab5)</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>tab5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               coef exp(coef)   p-value
 Sensor 3  7.274e-02 1.075e+00 1.490e-02
@@ -685,11 +688,11 @@ Sensor 17 2.633e-01 1.301e+00 3.270e-02</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="sc">%&gt;%</span> </span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_cycles)) <span class="sc">+</span> </span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> s_3)) <span class="sc">+</span></span>
-<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">375</span>)) <span class="sc">+</span></span>
-<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="sc">%&gt;%</span> </span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_cycles)) <span class="sc">+</span> </span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> s_3)) <span class="sc">+</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">375</span>)) <span class="sc">+</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -699,12 +702,12 @@ Sensor 17 2.633e-01 1.301e+00 3.270e-02</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="sc">%&gt;%</span> </span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_cycles)) <span class="sc">+</span> </span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> s_4)) <span class="sc">+</span></span>
-<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">375</span>)) <span class="sc">+</span></span>
-<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sensor 4 Readings over Time"</span>, <span class="at">x =</span> <span class="st">"Time Cycles"</span>, <span class="at">y =</span> <span class="st">"Sensor 4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="sc">%&gt;%</span> </span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_cycles)) <span class="sc">+</span> </span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> s_4)) <span class="sc">+</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">375</span>)) <span class="sc">+</span></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sensor 4 Readings over Time"</span>, <span class="at">x =</span> <span class="st">"Time Cycles"</span>, <span class="at">y =</span> <span class="st">"Sensor 4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -714,12 +717,12 @@ Sensor 17 2.633e-01 1.301e+00 3.270e-02</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="sc">%&gt;%</span> </span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_cycles)) <span class="sc">+</span> </span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> s_9)) <span class="sc">+</span></span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">375</span>)) <span class="sc">+</span></span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sensor 9 Readings over Time"</span>, <span class="at">x =</span> <span class="st">"Time Cycles"</span>, <span class="at">y =</span> <span class="st">"Sensor 9"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="sc">%&gt;%</span> </span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_cycles)) <span class="sc">+</span> </span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> s_9)) <span class="sc">+</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">375</span>)) <span class="sc">+</span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sensor 9 Readings over Time"</span>, <span class="at">x =</span> <span class="st">"Time Cycles"</span>, <span class="at">y =</span> <span class="st">"Sensor 9"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -729,11 +732,11 @@ Sensor 17 2.633e-01 1.301e+00 3.270e-02</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="sc">%&gt;%</span> </span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_cycles)) <span class="sc">+</span> </span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> s_11)) <span class="sc">+</span></span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">375</span>)) <span class="sc">+</span></span>
-<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="sc">%&gt;%</span> </span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_cycles)) <span class="sc">+</span> </span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> s_11)) <span class="sc">+</span></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">375</span>)) <span class="sc">+</span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -743,11 +746,11 @@ Sensor 17 2.633e-01 1.301e+00 3.270e-02</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="sc">%&gt;%</span> </span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_cycles)) <span class="sc">+</span> </span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> s_17)) <span class="sc">+</span></span>
-<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">375</span>)) <span class="sc">+</span></span>
-<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="sc">%&gt;%</span> </span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_cycles)) <span class="sc">+</span> </span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> s_17)) <span class="sc">+</span></span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">375</span>)) <span class="sc">+</span></span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
