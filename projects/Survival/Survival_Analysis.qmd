@@ -17,3 +17,5 @@ Using Kaplan Meier curves and a Cox proportional hazard model, I analyzed the re
 Paper: <https://docs.google.com/document/d/1yq_Jd_1LwriNe1Cd6GYp1IDszdTUs1tMx1HhQSqNwN0/edit>
 
 Presentation: <https://docs.google.com/presentation/d/1SZj3brdOlm7r6wHzMqbohh-ljHUzDvJ4sE0llfH7NKY/edit#slide=id.p>
+
+RMD: [Final Code Appendix](../../Rmd/Project_Final_Draft.Rmd)

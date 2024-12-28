@@ -268,7 +268,7 @@ Attaching package: 'nlme'</code></pre>
 ✖ dials::prune()    masks rpart::prune()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Learn how to get started at https://www.tidymodels.org/start/</code></pre>
+• Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(probably) <span class="co">#install.packages('probably')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -512,9 +512,9 @@ $schoolEnroll
 <pre><code># A tibble: 3 × 6
   .metric .estimator  mean     n std_err .config             
   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-1 mae     standard   2.00     10 0.0869  Preprocessor1_Model1
-2 rmse    standard   2.80     10 0.163   Preprocessor1_Model1
-3 rsq     standard   0.617    10 0.00940 Preprocessor1_Model1</code></pre>
+1 mae     standard   2.00     10  0.0883 Preprocessor1_Model1
+2 rmse    standard   2.83     10  0.148  Preprocessor1_Model1
+3 rsq     standard   0.611    10  0.0229 Preprocessor1_Model1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Residuals </span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>esg_fit_model1_residuals <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(esgdataAll_sub, esg_fit_model1 <span class="sc">%&gt;%</span> </span>
@@ -595,7 +595,7 @@ $schoolEnroll
 <pre><code># A tibble: 1 × 9
   penalty .metric .estimator  mean     n std_err .config            .best .bound
     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt;
-1   0.304 mae     standard    2.03    10  0.0999 Preprocessor1_Mod…  1.97   2.06</code></pre>
+1   0.304 mae     standard    2.04    10  0.0817 Preprocessor1_Mod…  1.97   2.06</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>final_wf <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(lasso_wf_tune, best_penalty) <span class="co"># incorporates penalty value to workflow</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>final_wf_se <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(lasso_wf_tune, best_se_penalty) <span class="co"># incorporates penalty value to workflow</span></span>
@@ -733,8 +733,8 @@ $schoolEnroll
 <pre><code># A tibble: 2 × 7
   penalty .metric .estimator  mean     n std_err .config              
     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                
-1   0.304 mae     standard    2.03    10  0.0999 Preprocessor1_Model19
-2   0.304 rmse    standard    2.92    10  0.192  Preprocessor1_Model19</code></pre>
+1   0.304 mae     standard    2.04    10  0.0817 Preprocessor1_Model19
+2   0.304 rmse    standard    2.94    10  0.157  Preprocessor1_Model19</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>lasso_mod_out <span class="ot">&lt;-</span> final_fit_se <span class="sc">%&gt;%</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">predict</span>(<span class="at">new_data =</span> esgdataAll_sub) <span class="sc">%&gt;%</span></span>
@@ -855,8 +855,8 @@ GCV = 3.7724  Scale est. = 3.42      n = 713</code></pre>
 <pre><code># A tibble: 2 × 6
   .metric .estimator  mean     n std_err .config             
   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-1 mae     standard   1.38     10  0.0378 Preprocessor1_Model1
-2 rsq     standard   0.825    10  0.0131 Preprocessor1_Model1</code></pre>
+1 mae     standard   1.37     10  0.0398 Preprocessor1_Model1
+2 rsq     standard   0.825    10  0.0170 Preprocessor1_Model1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>esg_gam_model2 <span class="ot">&lt;-</span> spline_wf <span class="sc">%&gt;%</span> <span class="fu">fit</span>(<span class="at">data=</span>esgdataAll_sub)</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>esg_gam_model2_residuals <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(esgdataAll_sub, esg_gam_model2 <span class="sc">%&gt;%</span> </span>

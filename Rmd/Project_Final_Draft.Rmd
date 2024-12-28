@@ -1,0 +1,254 @@
+---
+title: "Project Final Draft"
+author: "Ting Huang"
+date: "2022-12-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(survival)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r}
+# define column names for easy indexing
+index_names = c('unit_nr', 'time_cycles')
+setting_names = c('altitude', 'mach', 'TRA')
+sensor_names = c()
+for(i in 1:21) {
+  name <- paste0("s_", i)
+  sensor_names[i] = name
+}
+col_names = c(index_names,setting_names,sensor_names)
+```
+
+```{r}
+data1 <- read.table(file = "train_FD001.txt", col.names = col_names)
+```
+
+```{r}
+summary(data1)
+```
+
+```{r}
+data1 <- data1%>% 
+  group_by(unit_nr) %>% 
+  mutate(max_cycle = max(time_cycles)) %>% 
+  mutate(RUL = max_cycle-time_cycles)
+```
+
+```{r}
+data1 %>% 
+  group_by(unit_nr) %>% 
+  summarise(r = max(RUL)) %>% 
+  ggplot() +
+  geom_histogram(aes(x = r), bins = 15) +
+  labs(title = "Number of Failures of Turbofan Jet Engines over Time", x = "Time Cycles") + 
+  theme_minimal()
+```
+
+```{r}
+t1 = apply(data1[,c('s_1','s_2','s_3','s_4','s_5','s_6','s_7','s_8','s_9','s_10','s_11','s_12','s_13','s_14','s_15','s_16','s_17','s_18','s_19','s_20','s_21')],2,sd)
+```
+
+```{r}
+tab1 = matrix(t1, ncol = 1, byrow = TRUE)
+colnames(tab1) = "SD"
+rownames(tab1) = c('s_1','s_2','s_3','s_4','s_5','s_6','s_7','s_8','s_9','s_10','s_11','s_12','s_13','s_14','s_15','s_16','s_17','s_18','s_19','s_20','s_21')
+tab1 = as.table(tab1)
+```
+
+```{r}
+tab1
+```
+
+```{r}
+data1 <- data1 %>% 
+  mutate(breakdown = ifelse(time_cycles == max_cycle,
+                            yes = 1,
+                            no = 0))
+```
+
+```{r}
+data1 <- data1 %>% 
+  mutate(start = time_cycles-1)
+```
+
+```{r}
+data_n <- data1 %>% 
+  filter(breakdown == 1)
+```
+
+```{r}
+KM1 = survfit(Surv(time_cycles)~1, data = data_n)
+```
+
+```{r}
+plot(KM1, ylab = "Survival Proportion", xlab = "Time Cycles")
+```
+
+### Time-Varying Stuff
+
+```{r}
+coxph(Surv(start, time_cycles, breakdown) ~ s_9, data = data1)
+```
+
+```{r}
+coxph(Surv(start, time_cycles, breakdown) ~ s_9 + s_9:time_cycles, data = data1)
+```
+
+```{r}
+coxph(Surv(start, time_cycles, breakdown) ~ s_14, data = data1)
+```
+
+```{r}
+coxph(Surv(start, time_cycles, breakdown) ~ s_14 + s_14:time_cycles, data = data1)
+```
+
+```{r}
+coxph(Surv(start, time_cycles, breakdown) ~ s_4, data = data1)
+```
+
+```{r}
+coxph(Surv(start, time_cycles, breakdown) ~ s_4 + s_4:time_cycles, data = data1)
+```
+
+```{r}
+coxph(Surv(start, time_cycles, breakdown) ~ s_3, data = data1)
+```
+
+```{r}
+coxph(Surv(start, time_cycles, breakdown) ~ s_3 + s_3:time_cycles, data = data1)
+```
+
+```{r}
+coxph(Surv(start, time_cycles, breakdown) ~ s_11, data = data1)
+```
+
+```{r}
+coxph(Surv(start, time_cycles, breakdown) ~ s_11 + s_11:time_cycles, data = data1)
+```
+
+```{r}
+coxph(Surv(start, time_cycles, breakdown) ~ s_17 + s_11 + s_4 + s_9 + s_3, data = data1)
+```
+
+```{r}
+coxph(Surv(start, time_cycles, breakdown) ~ s_3 + s_4 + s_9 + s_11, data = data1)
+```
+
+```{r}
+tab2 = matrix(c(5.713e-02, 1.25855, 0.0448, 2.302e-01, 1.259e+00, 1.14e-15, 5.227e-03, 1.005e+00, 0.0434, 6.415e+00, 6.109e+02, 1.64e-11), ncol = 3, byrow = TRUE)
+colnames(tab2) = c("coef", "exp(coef)", "p-value")
+rownames(tab2) = c('Sensor 3','Sensor 4','Sensor 9','Sensor 11')
+tab2 = as.table(tab2)
+tab2
+```
+
+```{r}
+tab3 = matrix(c(4.884e-02, 1.050e+00, 0.0885, 2.257e-01, 1.253e+00, 2.98e-14, 5.505e-04, 1.001e+00, 0.8455, 6.036e+00, 4.182e+02, 1.25e-09, 5.157e-01, 1.675e+00, 4.47e-05), ncol = 3, byrow = TRUE)
+colnames(tab3) = c("coef", "exp(coef)", "p-value")
+rownames(tab3) = c('Sensor 3','Sensor 4','Sensor 9','Sensor 11', 'Sensor 17')
+tab3 = as.table(tab3)
+tab3
+```
+
+```{r}
+data1a = data1
+```
+
+```{r}
+data1a$s_9lag = c(NA, data1a$s_9[-nrow(data1a)])
+data1a$s_9lag[which(!duplicated(data1a$unit_nr))] = NA
+```
+
+```{r}
+data1a
+```
+
+```{r}
+data1a$s_11lag = c(NA, data1a$s_11[-nrow(data1a)])
+data1a$s_11lag[which(!duplicated(data1a$unit_nr))] = NA
+```
+
+```{r}
+data1a$s_4lag = c(NA, data1a$s_4[-nrow(data1a)])
+data1a$s_4lag[which(!duplicated(data1a$unit_nr))] = NA
+```
+
+```{r}
+data1a$s_3lag = c(NA, data1a$s_3[-nrow(data1a)])
+data1a$s_3lag[which(!duplicated(data1a$unit_nr))] = NA
+```
+
+```{r}
+data1a$s_17lag = c(NA, data1a$s_17[-nrow(data1a)])
+data1a$s_17lag[which(!duplicated(data1a$unit_nr))] = NA
+```
+
+```{r}
+coxph(Surv(start, time_cycles, breakdown) ~ s_11lag + s_4lag + s_3lag + s_9lag + s_17lag, data = data1a)
+```
+
+```{r}
+tab4 = matrix(c(7.404e-02, 1.077e+00, 0.0125, 1.562e-01, 1.169e+00, 3.22e-08, 4.999e-03, 1.005e+00, 0.0533, 8.460e+00, 4.722e+03, 2.76e-16), ncol = 3, byrow = TRUE)
+colnames(tab4) = c("coef", "exp(coef)", "p-value")
+rownames(tab4) = c('Sensor 3','Sensor 4','Sensor 9','Sensor 11')
+tab4 = as.table(tab4)
+tab4
+```
+
+```{r}
+tab5 = matrix(c(7.274e-02, 1.075e+00, 0.0149, 1.454e-01, 1.156e+00, 4.64e-07, 3.127e-03, 1.003e+00, 0.2491, 8.318e+00, 4.097e+03, 5.41e-15, 2.633e-01, 1.301e+00, 0.0327), ncol = 3, byrow = TRUE)
+colnames(tab5) = c("coef", "exp(coef)", "p-value")
+rownames(tab5) = c('Sensor 3','Sensor 4','Sensor 9','Sensor 11', 'Sensor 17')
+tab5 = as.table(tab5)
+tab5
+```
+
+```{r}
+data1 %>% 
+  ggplot(aes(x = time_cycles)) + 
+  geom_point(aes(y = s_3)) +
+  xlim(c(0,375)) +
+  theme_minimal()
+```
+
+```{r}
+data1 %>% 
+  ggplot(aes(x = time_cycles)) + 
+  geom_point(aes(y = s_4)) +
+  xlim(c(0,375)) +
+  theme_minimal() + 
+  labs(title = "Sensor 4 Readings over Time", x = "Time Cycles", y = "Sensor 4")
+```
+
+```{r}
+data1 %>% 
+  ggplot(aes(x = time_cycles)) + 
+  geom_point(aes(y = s_9)) +
+  xlim(c(0,375)) +
+  theme_minimal() + 
+  labs(title = "Sensor 9 Readings over Time", x = "Time Cycles", y = "Sensor 9")
+```
+
+```{r}
+data1 %>% 
+  ggplot(aes(x = time_cycles)) + 
+  geom_point(aes(y = s_11)) +
+  xlim(c(0,375)) +
+  theme_minimal()
+```
+
+```{r}
+data1 %>% 
+  ggplot(aes(x = time_cycles)) + 
+  geom_point(aes(y = s_17)) +
+  xlim(c(0,375)) +
+  theme_minimal()
+```
