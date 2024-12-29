@@ -283,7 +283,7 @@ Attaching package: 'nlme'</code></pre>
 ✖ dials::prune()    masks rpart::prune()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
+• Use suppressPackageStartupMessages() to eliminate package startup messages</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(probably) <span class="co">#install.packages('probably')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -527,9 +527,9 @@ $schoolEnroll
 <pre><code># A tibble: 3 × 6
   .metric .estimator  mean     n std_err .config             
   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-1 mae     standard   1.99     10  0.0654 Preprocessor1_Model1
-2 rmse    standard   2.82     10  0.109  Preprocessor1_Model1
-3 rsq     standard   0.610    10  0.0197 Preprocessor1_Model1</code></pre>
+1 mae     standard   1.98     10  0.0606 Preprocessor1_Model1
+2 rmse    standard   2.82     10  0.0951 Preprocessor1_Model1
+3 rsq     standard   0.611    10  0.0101 Preprocessor1_Model1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Residuals </span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>esg_fit_model1_residuals <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(esgdataAll_sub, esg_fit_model1 <span class="sc">%&gt;%</span> </span>
@@ -602,7 +602,7 @@ $schoolEnroll
 <pre><code># A tibble: 1 × 2
   penalty .config              
     &lt;dbl&gt; &lt;chr&gt;                
-1  0.0621 Preprocessor1_Model14</code></pre>
+1  0.0853 Preprocessor1_Model15</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>best_se_penalty <span class="ot">&lt;-</span> <span class="fu">select_by_one_std_err</span>(tune_output, <span class="at">metric =</span> <span class="st">'mae'</span>, <span class="fu">desc</span>(penalty)) <span class="co"># choose penalty value based on the largest penalty within 1 se of the lowest CV MAE</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>best_se_penalty</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -610,7 +610,7 @@ $schoolEnroll
 <pre><code># A tibble: 1 × 2
   penalty .config              
     &lt;dbl&gt; &lt;chr&gt;                
-1   0.304 Preprocessor1_Model19</code></pre>
+1   0.221 Preprocessor1_Model18</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>final_wf <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(lasso_wf_tune, best_penalty) <span class="co"># incorporates penalty value to workflow</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>final_wf_se <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(lasso_wf_tune, best_se_penalty) <span class="co"># incorporates penalty value to workflow</span></span>
@@ -621,46 +621,46 @@ $schoolEnroll
 <pre><code># A tibble: 17 × 3
    term            estimate penalty
    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;
- 1 (Intercept)       6.55    0.0621
- 2 electricity       0       0.0621
- 3 agroLand         -0.0705  0.0621
- 4 agroValue        -0.855   0.0621
- 5 energyIntensity   1.10    0.0621
- 6 forestArea        0.178   0.0621
- 7 fossilFuel        0.582   0.0621
- 8 gini             -0.0429  0.0621
- 9 govtEfficacy      1.89    0.0621
-10 incomeLowest20    0       0.0621
-11 internet          0.284   0.0621
-12 lifeExpectancy   -0.413   0.0621
-13 popDensity       -0.438   0.0621
-14 renewableElec    -0.199   0.0621
-15 renewableEnergy  -1.15    0.0621
-16 research          0.507   0.0621
-17 schoolEnroll     -0.219   0.0621</code></pre>
+ 1 (Intercept)       6.55    0.0853
+ 2 electricity       0       0.0853
+ 3 agroLand         -0.0480  0.0853
+ 4 agroValue        -0.851   0.0853
+ 5 energyIntensity   1.09    0.0853
+ 6 forestArea        0.141   0.0853
+ 7 fossilFuel        0.514   0.0853
+ 8 gini             -0.0230  0.0853
+ 9 govtEfficacy      1.80    0.0853
+10 incomeLowest20    0       0.0853
+11 internet          0.225   0.0853
+12 lifeExpectancy   -0.280   0.0853
+13 popDensity       -0.414   0.0853
+14 renewableElec    -0.232   0.0853
+15 renewableEnergy  -1.12    0.0853
+16 research          0.519   0.0853
+17 schoolEnroll     -0.224   0.0853</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(final_fit_se)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 17 × 3
-   term             estimate penalty
-   &lt;chr&gt;               &lt;dbl&gt;   &lt;dbl&gt;
- 1 (Intercept)      6.55       0.304
- 2 electricity      0          0.304
- 3 agroLand         0          0.304
- 4 agroValue       -0.751      0.304
- 5 energyIntensity  0.760      0.304
- 6 forestArea       0          0.304
- 7 fossilFuel       0.000135   0.304
- 8 gini             0          0.304
- 9 govtEfficacy     1.36       0.304
-10 incomeLowest20   0          0.304
-11 internet         0          0.304
-12 lifeExpectancy   0          0.304
-13 popDensity      -0.115      0.304
-14 renewableElec   -0.241      0.304
-15 renewableEnergy -1.18       0.304
-16 research         0.598      0.304
-17 schoolEnroll    -0.167      0.304</code></pre>
+   term            estimate penalty
+   &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;
+ 1 (Intercept)       6.55     0.221
+ 2 electricity       0        0.221
+ 3 agroLand          0        0.221
+ 4 agroValue        -0.813    0.221
+ 5 energyIntensity   0.896    0.221
+ 6 forestArea        0        0.221
+ 7 fossilFuel        0.159    0.221
+ 8 gini              0        0.221
+ 9 govtEfficacy      1.47     0.221
+10 incomeLowest20    0        0.221
+11 internet          0.0317   0.221
+12 lifeExpectancy    0        0.221
+13 popDensity       -0.242    0.221
+14 renewableElec    -0.262    0.221
+15 renewableEnergy  -1.13     0.221
+16 research          0.583    0.221
+17 schoolEnroll     -0.199    0.221</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -729,27 +729,28 @@ $schoolEnroll
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>final_fit_se <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(estimate <span class="sc">!=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 3
-   term             estimate penalty
-   &lt;chr&gt;               &lt;dbl&gt;   &lt;dbl&gt;
- 1 (Intercept)      6.55       0.304
- 2 agroValue       -0.751      0.304
- 3 energyIntensity  0.760      0.304
- 4 fossilFuel       0.000135   0.304
- 5 govtEfficacy     1.36       0.304
- 6 popDensity      -0.115      0.304
- 7 renewableElec   -0.241      0.304
- 8 renewableEnergy -1.18       0.304
- 9 research         0.598      0.304
-10 schoolEnroll    -0.167      0.304</code></pre>
+<pre><code># A tibble: 11 × 3
+   term            estimate penalty
+   &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;
+ 1 (Intercept)       6.55     0.221
+ 2 agroValue        -0.813    0.221
+ 3 energyIntensity   0.896    0.221
+ 4 fossilFuel        0.159    0.221
+ 5 govtEfficacy      1.47     0.221
+ 6 internet          0.0317   0.221
+ 7 popDensity       -0.242    0.221
+ 8 renewableElec    -0.262    0.221
+ 9 renewableEnergy  -1.13     0.221
+10 research          0.583    0.221
+11 schoolEnroll     -0.199    0.221</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>tune_output <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(penalty <span class="sc">==</span> (best_se_penalty <span class="sc">%&gt;%</span> <span class="fu">pull</span>(penalty)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 7
   penalty .metric .estimator  mean     n std_err .config              
     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                
-1   0.304 mae     standard    2.03    10  0.0489 Preprocessor1_Model19
-2   0.304 rmse    standard    2.95    10  0.0870 Preprocessor1_Model19</code></pre>
+1   0.221 mae     standard    2.00    10  0.0505 Preprocessor1_Model18
+2   0.221 rmse    standard    2.90    10  0.111  Preprocessor1_Model18</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>lasso_mod_out <span class="ot">&lt;-</span> final_fit_se <span class="sc">%&gt;%</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">predict</span>(<span class="at">new_data =</span> esgdataAll_sub) <span class="sc">%&gt;%</span></span>
@@ -870,8 +871,8 @@ GCV = 3.7724  Scale est. = 3.42      n = 713</code></pre>
 <pre><code># A tibble: 2 × 6
   .metric .estimator  mean     n std_err .config             
   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-1 mae     standard   1.37     10 0.0439  Preprocessor1_Model1
-2 rsq     standard   0.837    10 0.00930 Preprocessor1_Model1</code></pre>
+1 mae     standard   1.37     10  0.0321 Preprocessor1_Model1
+2 rsq     standard   0.832    10  0.0112 Preprocessor1_Model1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>esg_gam_model2 <span class="ot">&lt;-</span> spline_wf <span class="sc">%&gt;%</span> <span class="fu">fit</span>(<span class="at">data=</span>esgdataAll_sub)</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>esg_gam_model2_residuals <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(esgdataAll_sub, esg_gam_model2 <span class="sc">%&gt;%</span> </span>

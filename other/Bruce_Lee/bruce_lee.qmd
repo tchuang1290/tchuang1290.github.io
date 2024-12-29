@@ -1,0 +1,14 @@
+---
+title: "Racialization of Martial Arts in Bruce Lee Movies"
+image: Bruce.png
+image-alt: "Screenshot of beginning of paper"
+categories:
+  - Asian American Studies
+  - Media and Cultural Studies
+  - Writing
+about: 
+  template: solana
+  image: Bruce.png
+---
+
+<https://docs.google.com/document/d/1XQ2xhVYuWSEwiS3QNI7trlk-vv0sysk3/edit?usp=sharing&ouid=116188639352950574208&rtpof=true&sd=true>
