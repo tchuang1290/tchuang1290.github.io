@@ -1,5 +1,5 @@
 ---
-title: "StatGen"
+title: "Statistical Genetics"
 image: DNA.png
 image-alt: Image of DNA sequence
 categories:
