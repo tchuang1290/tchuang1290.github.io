@@ -15,4 +15,6 @@ Main work produced for this course was content summaries which involved summariz
 
 Content Summary 1: <https://drive.google.com/file/d/1zYPC-N_uqZIixcNx64-OkYlHObDFYNum/view?usp=sharing>
 
-Content Summary 2: [Content Summary 2](../../Rmd/Content Summary 2.Rmd)
+Content Summary 2: [Content Summary 2](../../Rmd/Content%20Summary%202.Rmd)
+
+Content Summary 3: <https://docs.google.com/document/d/1HM51evWTNX9X5kaDiijT-2u5ZDcuSovd/edit?usp=sharing&ouid=116188639352950574208&rtpof=true&sd=true>
