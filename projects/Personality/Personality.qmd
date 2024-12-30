@@ -1,12 +1,13 @@
 ---
 title: "GWAS and Personalities"
-
+image: Pathway.png
 image-alt: Graphic displaying the process of Functional Class Scoring
 categories: 
   - Research
   - Genetics
-about: 
+about:
   template: solana
+  image: Pathway.png
 ---
 
 Produced for STAT 494 "Statistical Genetics" at Macalester College with Lucy Tran '23.
@@ -14,3 +15,5 @@ Produced for STAT 494 "Statistical Genetics" at Macalester College with Lucy Tra
 **Products**
 
 Presentation: <https://docs.google.com/presentation/d/1Ti9fU15B1p2mDweW9JadluguxhnSI7qk8W8jGvB5DH4/edit?usp=sharing>
+
+Digital Artifact: <https://sites.google.com/view/gwas-and-personalities/home?authuser=1>

@@ -1,0 +1,14 @@
+---
+title: "Interference"
+image: Interference.png
+image-alt: Example of interference
+categories:
+  - Causal Inference
+  - Methods
+  - Writing
+about: 
+  template: solana
+  image: Interference.png
+---
+
+<https://docs.google.com/document/d/18FHp-WNjlHc1ubSEVgNxdz8IuWxmmQr1/edit?usp=sharing&ouid=116188639352950574208&rtpof=true&sd=true>
