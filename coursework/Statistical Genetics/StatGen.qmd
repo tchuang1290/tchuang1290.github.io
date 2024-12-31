@@ -13,6 +13,8 @@ about:
 
 Main work produced for this course was content summaries which involved summarizing important information from lectures and labs.
 
+**Products**
+
 Content Summary 1: <https://drive.google.com/file/d/1zYPC-N_uqZIixcNx64-OkYlHObDFYNum/view?usp=sharing>
 
 Content Summary 2: [Content Summary 2](../../Rmd/Content%20Summary%202.Rmd)

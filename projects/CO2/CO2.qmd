@@ -10,7 +10,9 @@ about:
   image: tree.png
 ---
 
-Completed as final project for STAT 253 "Statistical Machine Learning" at Macalester College with Ayaa Asoba and Julia Coelho
+Completed as final project for STAT 253 "Statistical Machine Learning" at Macalester College with Ayaa Asoba and Julia Coelho.
+
+**Products**
 
 Presentation: <https://docs.google.com/presentation/d/1cRzZPT1LijIIKyGGKAEzkKDYWMsYUf22/edit?usp=sharing&ouid=116188639352950574208&rtpof=true&sd=true>
 
