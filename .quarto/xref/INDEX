@@ -64,5 +64,8 @@
   },
   "projects/Interference/Interference.qmd": {
     "Interference.html": "370ba15a"
+  },
+  "projects/Bike/bike.qmd": {
+    "bike.html": "ac25ddc8"
   }
 }

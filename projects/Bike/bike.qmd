@@ -1,0 +1,23 @@
+---
+title: "Predicting Bike Share Demand in Seoul, South Korea"
+image: BikeRentalsSeason.png
+image-alt: Line Plot displaying average bike rentals for each season
+categories: 
+  - Machine Learning
+  - Python
+about: 
+  template: solana
+  image: BikeRentalsSeason.png
+---
+
+Final project for STAT 5052 "Statistical and Machine Learning". Completed with James Manne-Nicholas.
+
+After some light data exploration and cleaning, we fit and tuned several models like KNN regressors, random forest regressors, and gradient boosted trees in order to predict the amount of bikes that would be rented at a specific time in Seoul, South Korea. The best performing model was the random forest regressor although we believe with more time, the gradient boosted trees could have been more precisely tuned which may have resulted in better performance.
+
+**Products**
+
+Report: <https://docs.google.com/document/d/1cvEJvZvzSElZxPAhhu9ZaHuY_53BHdaD/edit?usp=sharing&ouid=116188639352950574208&rtpof=true&sd=true>
+
+Presentation: <https://docs.google.com/presentation/d/1wV44XmlXuoohZXDP1rqbFJv7o2USNWWD/edit?usp=sharing&ouid=116188639352950574208&rtpof=true&sd=true>
+
+Jupyter Notebook: <https://github.com/tchuang1290/5052FinalProject/blob/main/5052Project.ipynb>
