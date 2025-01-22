@@ -127,6 +127,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../tidytuesday.html"> 
+<span class="menu-text">Tidy Tuesday</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
@@ -283,7 +287,7 @@ Attaching package: 'nlme'</code></pre>
 ✖ dials::prune()    masks rpart::prune()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Use suppressPackageStartupMessages() to eliminate package startup messages</code></pre>
+• Learn how to get started at https://www.tidymodels.org/start/</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(probably) <span class="co">#install.packages('probably')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -527,9 +531,9 @@ $schoolEnroll
 <pre><code># A tibble: 3 × 6
   .metric .estimator  mean     n std_err .config             
   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-1 mae     standard   2.00     10  0.0733 Preprocessor1_Model1
-2 rmse    standard   2.82     10  0.127  Preprocessor1_Model1
-3 rsq     standard   0.611    10  0.0166 Preprocessor1_Model1</code></pre>
+1 mae     standard   1.99     10  0.0972 Preprocessor1_Model1
+2 rmse    standard   2.79     10  0.178  Preprocessor1_Model1
+3 rsq     standard   0.631    10  0.0262 Preprocessor1_Model1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Residuals </span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>esg_fit_model1_residuals <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(esgdataAll_sub, esg_fit_model1 <span class="sc">%&gt;%</span> </span>
@@ -602,7 +606,7 @@ $schoolEnroll
 <pre><code># A tibble: 1 × 2
   penalty .config              
     &lt;dbl&gt; &lt;chr&gt;                
-1  0.0853 Preprocessor1_Model15</code></pre>
+1  0.0621 Preprocessor1_Model14</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>best_se_penalty <span class="ot">&lt;-</span> <span class="fu">select_by_one_std_err</span>(tune_output, <span class="at">metric =</span> <span class="st">'mae'</span>, <span class="fu">desc</span>(penalty)) <span class="co"># choose penalty value based on the largest penalty within 1 se of the lowest CV MAE</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>best_se_penalty</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -621,23 +625,23 @@ $schoolEnroll
 <pre><code># A tibble: 17 × 3
    term            estimate penalty
    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;
- 1 (Intercept)       6.55    0.0853
- 2 electricity       0       0.0853
- 3 agroLand         -0.0480  0.0853
- 4 agroValue        -0.851   0.0853
- 5 energyIntensity   1.09    0.0853
- 6 forestArea        0.141   0.0853
- 7 fossilFuel        0.514   0.0853
- 8 gini             -0.0230  0.0853
- 9 govtEfficacy      1.80    0.0853
-10 incomeLowest20    0       0.0853
-11 internet          0.225   0.0853
-12 lifeExpectancy   -0.280   0.0853
-13 popDensity       -0.414   0.0853
-14 renewableElec    -0.232   0.0853
-15 renewableEnergy  -1.12    0.0853
-16 research          0.519   0.0853
-17 schoolEnroll     -0.224   0.0853</code></pre>
+ 1 (Intercept)       6.55    0.0621
+ 2 electricity       0       0.0621
+ 3 agroLand         -0.0705  0.0621
+ 4 agroValue        -0.855   0.0621
+ 5 energyIntensity   1.10    0.0621
+ 6 forestArea        0.178   0.0621
+ 7 fossilFuel        0.582   0.0621
+ 8 gini             -0.0429  0.0621
+ 9 govtEfficacy      1.89    0.0621
+10 incomeLowest20    0       0.0621
+11 internet          0.284   0.0621
+12 lifeExpectancy   -0.413   0.0621
+13 popDensity       -0.438   0.0621
+14 renewableElec    -0.199   0.0621
+15 renewableEnergy  -1.15    0.0621
+16 research          0.507   0.0621
+17 schoolEnroll     -0.219   0.0621</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(final_fit_se)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -748,8 +752,8 @@ $schoolEnroll
 <pre><code># A tibble: 2 × 7
   penalty .metric .estimator  mean     n std_err .config              
     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                
-1   0.304 mae     standard    2.03    10  0.0956 Preprocessor1_Model19
-2   0.304 rmse    standard    2.93    10  0.160  Preprocessor1_Model19</code></pre>
+1   0.304 mae     standard    2.04    10   0.111 Preprocessor1_Model19
+2   0.304 rmse    standard    2.91    10   0.204 Preprocessor1_Model19</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>lasso_mod_out <span class="ot">&lt;-</span> final_fit_se <span class="sc">%&gt;%</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">predict</span>(<span class="at">new_data =</span> esgdataAll_sub) <span class="sc">%&gt;%</span></span>
@@ -870,8 +874,8 @@ GCV = 3.7724  Scale est. = 3.42      n = 713</code></pre>
 <pre><code># A tibble: 2 × 6
   .metric .estimator  mean     n std_err .config             
   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-1 mae     standard   1.37     10 0.0456  Preprocessor1_Model1
-2 rsq     standard   0.835    10 0.00632 Preprocessor1_Model1</code></pre>
+1 mae     standard   1.40     10  0.0368 Preprocessor1_Model1
+2 rsq     standard   0.822    10  0.0133 Preprocessor1_Model1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>esg_gam_model2 <span class="ot">&lt;-</span> spline_wf <span class="sc">%&gt;%</span> <span class="fu">fit</span>(<span class="at">data=</span>esgdataAll_sub)</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>esg_gam_model2_residuals <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(esgdataAll_sub, esg_gam_model2 <span class="sc">%&gt;%</span> </span>

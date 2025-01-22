@@ -1,0 +1,39 @@
+---
+title: "Common Reasons for Terminating Himalayan Climbs (2020-2024)"
+date: "01/21/2025"
+output: html_document
+---
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(forcats)
+```
+
+```{r}
+# load data
+exped_tidy <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-01-21/exped_tidy.csv')
+peaks_tidy <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-01-21/peaks_tidy.csv')
+```
+
+```{r, fig.width=10}
+exped_tidy %>% 
+  mutate(TERMREASON1 = as.factor(TERMREASON)) %>% 
+  filter(!TERMREASON1 %in% c(0,1,2)) %>% 
+  ggplot(aes(x = fct_infreq(TERMREASON1), fill = TERMREASON_FACTOR)) +
+  geom_bar() +
+  labs(title = "Common Reasons for Terminating Himalayan Climbs (2020–2024)",
+       fill = "Reason for Termination") +
+  scale_fill_discrete(breaks = c("Bad weather (storms, high winds)","Bad conditions (deep snow, avalanching, falling ice, or rock)", "Illness, AMS, exhaustion, or frostbite", "Did not attempt climb", "Other", "Route technically too difficult, lack of experience, strength, or motivation", "Accident (death or serious injury)", "Lack (or loss) of supplies, support or equipment", "Lack of time", "Did not reach base camp")) +
+  theme_classic() +
+  theme(axis.title = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.line.x = element_blank())
+```
+
+The plot above displays common reasons Himalayan climbs were terminated between the years 2020 and 2024. The most common reason by far for a climb to be terminated was bad weather with almost 80 climbs stopped for this reason. The second most common reason was bad conditions like deep snow or avalanching with about 55 climbs terminated for this reason. The third most common reason being illness or other medical reasons not including serious injury or death which stopped over 20 climbs. The other listed reasons all stopped about 10 climbs or less with the least common reason for terminating a climb being that the group did not reach base camp.
+
+
+

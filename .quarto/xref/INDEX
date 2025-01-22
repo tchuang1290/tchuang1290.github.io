@@ -67,5 +67,11 @@
   },
   "projects/Bike/bike.qmd": {
     "bike.html": "ac25ddc8"
+  },
+  "posts/TidyTuesday1.Rmd": {
+    "TidyTuesday1.html": "2d2cc22e"
+  },
+  "tidytuesday.qmd": {
+    "tidytuesday.html": "f79c34ca"
   }
 }

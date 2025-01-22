@@ -3,6 +3,9 @@
     "projects.qmd": [
       "projects"
     ],
+    "tidytuesday.qmd": [
+      "posts"
+    ],
     "other.qmd": [
       "other"
     ],

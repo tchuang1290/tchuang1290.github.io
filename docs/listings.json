@@ -8,6 +8,12 @@
     ]
   },
   {
+    "listing": "/tidytuesday.html",
+    "items": [
+      "/posts/TidyTuesday1.html"
+    ]
+  },
+  {
     "listing": "/projects.html",
     "items": [
       "/projects/Bike/bike.html",

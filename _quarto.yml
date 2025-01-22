@@ -2,12 +2,16 @@ project:
   type: website
   output-dir: docs
 
+execute: 
+  freeze: auto
+
 website:
   title: "Ting-Chien Huang"
   navbar:
     left:
       - href: index.qmd
         text: Home
+      - tidytuesday.qmd
       - projects.qmd
       - coursework.qmd
       - other.qmd
