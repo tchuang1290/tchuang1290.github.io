@@ -1,0 +1,16 @@
+---
+title: "Data Prep and Exploratory Data Analysis-Maven Analytics"
+image: discount.png
+image-alt: Bar chart displaying cancellation rate of Maven Music if customers had a discount or not.
+categories: 
+  - Python
+  - Pandas
+  - Seaborn
+about: 
+  template: solana
+  image: discount.png
+---
+
+Online course through Maven Analytics. Learned about how to approach data science projects through scoping the project to presenting results. Reviewed how to clean, sort, and filter data in Pandas using Jupyter Notebooks. Explored concepts and practical examples of feature engineering. Created visualizations including scatter plots, histograms, and bar charts for EDA using Seaborn. Course included two projects that reinforced the entire data prep and EDA process from raw data to visualizations to data ready for modeling.
+
+Github: <https://github.com/tchuang1290/Maven-Analytics-Data-Prep-EDA>

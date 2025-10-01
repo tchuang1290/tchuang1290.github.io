@@ -4,7 +4,7 @@
     "href": "coursework.html",
     "title": "Coursework",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nStatistical Genetics\n\n\n\nGenetics\n\n\nBiostatistics\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMachine Learning in Python with Sci-Kit Learn\n\n\n\nPython\n\n\nML\n\n\nPandas\n\n\nSKLearn\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nStatistical Genetics\n\n\n\nGenetics\n\n\nBiostatistics\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMachine Learning in Python with Sci-Kit Learn\n\n\n\nPython\n\n\nML\n\n\nPandas\n\n\nSKLearn\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Prep and Exploratory Data Analysis-Maven Analytics\n\n\n\nPython\n\n\nPandas\n\n\nSeaborn\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -222,5 +222,12 @@
     "title": "Other",
     "section": "",
     "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nSenior Capstone-Piano Recital\n\n\n\nMusic\n\n\nPiano\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRacialization of Martial Arts in Bruce Lee Movies\n\n\n\nAsian American Studies\n\n\nMedia and Cultural Studies\n\n\nWriting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "coursework/Data Prep and EDA/EDA.html",
+    "href": "coursework/Data Prep and EDA/EDA.html",
+    "title": "Data Prep and Exploratory Data Analysis-Maven Analytics",
+    "section": "",
+    "text": "Online course through Maven Analytics. Learned about how to approach data science projects through scoping the project to presenting results. Reviewed how to clean, sort, and filter data in Pandas using Jupyter Notebooks. Explored concepts and practical examples of feature engineering. Created visualizations including scatter plots, histograms, and bar charts for EDA using Seaborn. Course included two projects that reinforced the entire data prep and EDA process from raw data to visualizations to data ready for modeling.\nGithub: https://github.com/tchuang1290/Maven-Analytics-Data-Prep-EDA"
   }
 ]
