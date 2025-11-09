@@ -19,15 +19,19 @@ about:
 
 ### Education
 
-MS in Statistics <br> Sept 2023 - Present \| University of Minnesota
+MS in Statistics <br> Sept 2023 - June 2025 \| University of Minnesota
 
 BA in Statistics and Music <br> 2023 \| Macalester College
 :::
 
 ### Biography
 
-As a statistician, I am primarily interested in data analysis, data visualization, and machine learning. I have experience implementing data mining and machine learning techniques in Python3 using packages such as pandas, scikitlearn, and seaborn. I also have a wide array of experiences using data analysis, data visualization, and statistical modeling tools in R. I have taken classes in a variety of statistical topics including survival analysis, statistical genetics, and causal inference among other things. Currently I am focusing most of my energy learning about ANOVAs and experiment design related to ANOVA analysis. I am also in the process of learning SQL in my free time.
+As a statistician, I am primarily interested in data analysis, data visualization, and machine learning. I have experience implementing data mining and machine learning techniques in Python using packages such as Pandas, Scikit-Learn, and Seaborn. I also have a wide array of experiences using data analysis, data visualization, and statistical modeling tools in R. I have taken classes in a variety of statistical topics including survival analysis, statistical genetics, and causal inference among other things. Currently I am focusing on improving my SQL, Python, and Tableau skills through self-guided projects and Kaggle competitions.
 
 ### Personal
 
-I am from Portland, OR and love almost anything outdoors. Some of my best memories are from hiking in the forests surrounding Mt. Hood or up the cliffs of the Columbia Gorge. In addition to hiking and camping, I love playing video games and watching motor sports. I played piano for 17 years and guitar for 10. I also picked up some percussion along the way in my years as a musician.
+Originally from Portland, OR but currently calling Minneapolis, MN home. I love almost anything outdoors. Some of my best memories are from hiking in the forests surrounding Mt. Hood or up the cliffs of the Columbia Gorge. In addition to hiking and camping, I love playing video games and watching motor sports. I played piano for 17 years and guitar for 10. I also picked up some percussion along the way in my years as a musician.
+
+### Certifications
+
+Maven Analytics: <https://certificates.mavenanalytics.io/profile/tingchienhuang743056/wallet>
