@@ -37,5 +37,4 @@ The plot above displays common reasons Himalayan climbs were terminated between 
 
 I reproduced this plot in Python using Pandas, Matplotlib, and Seaborn! Check it out [here](https://github.com/tchuang1290/TidyTuesdayPython/blob/main/1-21-25%20Tidy%20Tuesday.ipynb).
 
-Data obtained from: Data Science Learning Community (2024). Tidy Tuesday: A weekly social data project. [https://tidytues.day](https://tidytues.day)
-
+Data obtained from: Data Science Learning Community (2024). Tidy Tuesday: A weekly social data project. <https://tidytues.day>

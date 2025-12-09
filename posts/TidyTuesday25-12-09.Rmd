@@ -1,0 +1,46 @@
+---
+title: "Types of Car Models Produced by Country"
+author: "Ting Huang"
+date: "2025-12-08"
+output: html_document
+---
+
+# Load Data
+
+```{r, message = FALSE}
+tuesdata <- tidytuesdayR::tt_load('2025-12-09')
+```
+
+```{r}
+qatarcars <- tuesdata$qatarcars
+```
+
+# Load Libraries
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(forcats)
+```
+
+```{r}
+qatar_cars <- qatarcars %>% 
+  group_by(origin) %>% 
+  mutate(n_cars = n())
+```
+
+```{r}
+qatar_cars %>% 
+  ggplot() + 
+  geom_bar(aes(y = reorder(origin, n_cars), fill = enginetype), position = 'dodge') +
+  scale_fill_viridis_d(option = "turbo") +
+  labs(title = "Car Models Produced by Country", x = "", y = "", fill = "Engine Type") +
+  theme_minimal() + 
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major.y = element_blank())
+  
+```
+
+This plot displays the types of car models, by engine type, produced by several different countries. It is important to note that this is a toy dataset, so any conclusions drawn from this plot may not reflect reality. In this dataset, Japan produces the most models of cars in total and also the most models of petrol and hybrid cars. They do not produce any electric car models. The U.S. produces the most electric car models but produces a relatively small amount of car models overall. Sweden produces the least amount of car models overall and only produces hybrid cars. Italy only produces petrol car models. Only three countries produce electric, hybrid, and petrol car models: Germany, the UK, and South Korea. Most countries (other than Sweden) produce more petrol car models than any other engine type. 
+
+Data obtained from: Data Science Learning Community (2024). Tidy Tuesday: A weekly social data project. <https://tidytues.day>

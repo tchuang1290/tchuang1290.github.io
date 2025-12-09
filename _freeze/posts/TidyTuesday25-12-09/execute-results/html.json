@@ -1,0 +1,17 @@
+{
+  "hash": "e82373b6bae90aadf793935adc6886aa",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Tidy Tuesday 2025-12-09\"\nauthor: \"Ting Huang\"\ndate: \"2025-12-08\"\noutput: html_document\n---\n\n\n\n# Load Data\n\n\n::: {.cell}\n\n```{.r .cell-code}\ntuesdata <- tidytuesdayR::tt_load('2025-12-09')\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\n---- Compiling #TidyTuesday Information for 2025-12-09 ----\n--- There is 1 file available ---\n\n\n── Downloading files ───────────────────────────────────────────────────────────\n\n  1 of 1: \"qatarcars.csv\"\n```\n\n\n:::\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nqatarcars <- tuesdata$qatarcars\n```\n:::\n\n\n# Load Libraries\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(dplyr)\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\n\nAttaching package: 'dplyr'\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n```\n\n\n:::\n\n```{.r .cell-code}\nlibrary(ggplot2)\nlibrary(forcats)\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nqatar_cars <- qatarcars %>% \n  group_by(origin) %>% \n  mutate(n_cars = n())\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nqatar_cars %>% \n  ggplot() + \n  geom_bar(aes(y = reorder(origin, n_cars), fill = enginetype), position = 'dodge') +\n  scale_fill_viridis_d(option = \"turbo\") +\n  labs(title = \"Cars Produced by Country\", x = \"\", y = \"\", fill = \"Engine Type\") +\n  theme_minimal() + \n  theme(panel.grid.minor = element_blank(),\n        panel.grid.major.y = element_blank())\n```\n\n::: {.cell-output-display}\n![](TidyTuesday25-12-09_files/figure-html/unnamed-chunk-5-1.png){width=672}\n:::\n:::\n\n\n\n",
+    "supporting": [
+      "TidyTuesday25-12-09_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

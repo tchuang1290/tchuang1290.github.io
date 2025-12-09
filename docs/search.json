@@ -18,7 +18,7 @@
     "href": "tidytuesday.html",
     "title": "Tidy Tuesday",
     "section": "",
-    "text": "Common Reasons for Terminating Himalayan Climbs (2020-2024)\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Types of Car Models Produced by Country\n\n\n\n\n\n\n\n\nDec 8, 2025\n\n\nTing Huang\n\n\n\n\n\n\n\n\n\n\n\n\nCommon Reasons for Terminating Himalayan Climbs (2020-2024)\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "Rmd/Content Summary 2.html",
@@ -200,7 +200,7 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nPredicting Bike Share Demand in Seoul, South Korea\n\n\n\nMachine Learning\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInterference in Causal Inference\n\n\n\nCausal Inference\n\n\nMethods\n\n\nWriting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGWAS and Personalities\n\n\n\nResearch\n\n\nGenetics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEnergy and Pearson’s Distances as Metrics for Brain Region Activation Detection in Audiovisual fMRI Study\n\n\n\nSummer Institute in Biostatistics\n\n\nR\n\n\nResearch\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCO2 Levels in 20 Major Countries\n\n\n\nMachine Learning\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnalyzing Turbofan Jet Engines using Survival Analysis Methods\n\n\n\nSurvival Analysis\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAmerica Going Green: A Look at Renewable Energy Generation in the U.S.\n\n\n\nCorrelated Data\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nPredicting Bike Share Demand in Seoul, South Korea\n\n\n\nMachine Learning\n\nPython\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInterference in Causal Inference\n\n\n\nCausal Inference\n\nMethods\n\nWriting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGWAS and Personalities\n\n\n\nResearch\n\nGenetics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEnergy and Pearson’s Distances as Metrics for Brain Region Activation Detection in Audiovisual fMRI Study\n\n\n\nSummer Institute in Biostatistics\n\nR\n\nResearch\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCO2 Levels in 20 Major Countries\n\n\n\nMachine Learning\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnalyzing Turbofan Jet Engines using Survival Analysis Methods\n\n\n\nSurvival Analysis\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAmerica Going Green: A Look at Renewable Energy Generation in the U.S.\n\n\n\nCorrelated Data\n\nR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -229,5 +229,12 @@
     "title": "Data Prep and Exploratory Data Analysis-Maven Analytics",
     "section": "",
     "text": "Online course through Maven Analytics. Learned about how to approach data science projects through scoping the project to presenting results. Reviewed how to clean, sort, and filter data in Pandas using Jupyter Notebooks. Explored concepts and practical examples of feature engineering. Created visualizations including scatter plots, histograms, and bar charts for EDA using Seaborn. Course included two projects that reinforced the entire data prep and EDA process from raw data to visualizations to data ready for modeling.\nGithub: https://github.com/tchuang1290/Maven-Analytics-Data-Prep-EDA"
+  },
+  {
+    "objectID": "posts/TidyTuesday25-12-09.html",
+    "href": "posts/TidyTuesday25-12-09.html",
+    "title": "Tidy Tuesday 2025-12-09",
+    "section": "",
+    "text": "Load Data\n\ntuesdata &lt;- tidytuesdayR::tt_load('2025-12-09')\n\n---- Compiling #TidyTuesday Information for 2025-12-09 ----\n--- There is 1 file available ---\n\n\n── Downloading files ───────────────────────────────────────────────────────────\n\n  1 of 1: \"qatarcars.csv\"\n\n\n\nqatarcars &lt;- tuesdata$qatarcars\n\n\n\nLoad Libraries\n\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(ggplot2)\nlibrary(forcats)\n\n\nqatar_cars &lt;- qatarcars %&gt;% \n  group_by(origin) %&gt;% \n  mutate(n_cars = n())\n\n\nqatar_cars %&gt;% \n  ggplot() + \n  geom_bar(aes(y = reorder(origin, n_cars), fill = enginetype), position = 'dodge') +\n  scale_fill_viridis_d(option = \"turbo\") +\n  labs(title = \"Cars Produced by Country\", x = \"\", y = \"\", fill = \"Engine Type\") +\n  theme_minimal() + \n  theme(panel.grid.minor = element_blank(),\n        panel.grid.major.y = element_blank())"
   }
 ]
