@@ -1,0 +1,108 @@
+---
+title: "Tidy Tuesday 2026-01-12"
+author: "Ting Huang"
+date: "2026-01-12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load Packages
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(sf)
+library(rnaturalearth)
+```
+
+## Load Data
+
+```{r}
+tuesdata <- tidytuesdayR::tt_load(2026, week = 2)
+africa <- tuesdata$africa
+```
+
+## Data Exploration
+
+```{r}
+which(is.na(africa))
+```
+
+```{r}
+africa %>% 
+  group_by_all() %>% 
+  filter(n() > 1) %>% 
+  ungroup()
+```
+
+```{r}
+africa_clean <- unique(africa)
+```
+
+```{r}
+africa_clean %>% 
+  group_by_all() %>% 
+  filter(n() > 1) %>% 
+  ungroup()
+```
+
+```{r}
+africa_lang <- africa_clean %>% 
+  group_by(country) %>% 
+  tally(name = "num_langs_spoken")
+```
+
+```{r}
+africa_lang$country <- tolower(africa_lang$country)
+```
+
+```{r}
+africa_lang[rep(12,2),]
+```
+
+```{r}
+africa_lang1 <- rbind(africa_lang[-12,],africa_lang[rep(12,2),])
+```
+
+```{r}
+africa_lang1[51, 1] = "democratic republic of the congo"
+africa_lang1[52, 1] = "republic of the congo"
+```
+
+```{r}
+africa_countries <- ne_countries(
+  continent = "Africa",
+  scale = "medium",
+  returnclass = "sf"
+)
+```
+
+```{r}
+africa_countries$geounit <- tolower(africa_countries$geounit)
+```
+
+```{r}
+africa_countries1 <- africa_countries %>% 
+  select(geounit, geometry)
+```
+
+```{r}
+africa_countries2 <- africa_countries1 %>% 
+  left_join(africa_lang1, by = c("geounit" = "country"))
+```
+
+```{r}
+ggplot(africa_countries2) +
+  geom_sf(aes(fill = num_langs_spoken), color = "white", linewidth = 0.2) +
+  scale_fill_viridis_c(option = "plasma") +
+  labs(
+    title = "Number of Languages Spoken in African Countries",
+    caption = "Source: Natural Earth and Data Science Learning Community",
+    fill = ""
+  ) +
+  theme_void()
+```
+
