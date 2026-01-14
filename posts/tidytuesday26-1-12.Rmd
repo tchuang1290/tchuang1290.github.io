@@ -1,5 +1,5 @@
 ---
-title: "Tidy Tuesday 2026-01-12"
+title: "Number of Languages Spoken in African Countries"
 author: "Ting Huang"
 date: "2026-01-12"
 output: html_document
@@ -106,3 +106,6 @@ ggplot(africa_countries2) +
   theme_void()
 ```
 
+This map displays the number of languages spoken in various African countries. It should be noted that the original data did not include separate values for the Democratic Republic of the Congo and the Republic of the Congo so the value associated with "Congo" was duplicated in order to represent both countries on this map. It should also be noted that some countries included in the language data did not appear in the map data and vice versa most likely due to the language data being outdated and not reflecting current political realities.
+
+In terms of general trends, it seems that countries closer to the center of Africa tend have more languages spoken within them. The countries on the North coast of Africa seem to have less languages spoken in them than other parts of Africa. The most languages are spoken in Cameroon with 96.

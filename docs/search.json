@@ -18,7 +18,7 @@
     "href": "tidytuesday.html",
     "title": "Tidy Tuesday",
     "section": "",
-    "text": "Types of Car Models Produced by Country\n\n\n\n\n\n\n\n\nDec 8, 2025\n\n\nTing Huang\n\n\n\n\n\n\n\n\n\n\n\n\nCommon Reasons for Terminating Himalayan Climbs (2020-2024)\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\n\n\n\nNo matching items"
+    "text": "Tidy Tuesday 2026-01-12\n\n\n\n\n\n\n\n\nJan 12, 2026\n\n\nTing Huang\n\n\n\n\n\n\n\n\n\n\n\n\nTypes of Car Models Produced by Country\n\n\n\n\n\n\n\n\nDec 8, 2025\n\n\nTing Huang\n\n\n\n\n\n\n\n\n\n\n\n\nCommon Reasons for Terminating Himalayan Climbs (2020-2024)\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "Rmd/Content Summary 2.html",
@@ -236,5 +236,33 @@
     "title": "Types of Car Models Produced by Country",
     "section": "",
     "text": "Load Data\n\ntuesdata &lt;- tidytuesdayR::tt_load('2025-12-09')\n\n\nqatarcars &lt;- tuesdata$qatarcars\n\n\n\nLoad Libraries\n\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(ggplot2)\nlibrary(forcats)\n\n\nqatar_cars &lt;- qatarcars %&gt;% \n  group_by(origin) %&gt;% \n  mutate(n_cars = n())\n\n\nqatar_cars %&gt;% \n  ggplot() + \n  geom_bar(aes(y = reorder(origin, n_cars), fill = enginetype), position = 'dodge') +\n  scale_fill_viridis_d(option = \"turbo\") +\n  labs(title = \"Car Models Produced by Country\", x = \"\", y = \"\", fill = \"Engine Type\") +\n  theme_minimal() + \n  theme(panel.grid.minor = element_blank(),\n        panel.grid.major.y = element_blank())\n\n\n\n\n\n\n\n\nThis plot displays the types of car models, by engine type, produced by several different countries. It is important to note that this is a toy dataset, so any conclusions drawn from this plot may not reflect reality. In this dataset, Japan produces the most models of cars in total and also the most models of petrol and hybrid cars. They do not produce any electric car models. The U.S. produces the most electric car models but produces a relatively small amount of car models overall. Sweden produces the least amount of car models overall and only produces hybrid cars. Italy only produces petrol car models. Only three countries produce electric, hybrid, and petrol car models: Germany, the UK, and South Korea. Most countries (other than Sweden) produce more petrol car models than any other engine type.\nData obtained from: Data Science Learning Community (2024). Tidy Tuesday: A weekly social data project. https://tidytues.day"
+  },
+  {
+    "objectID": "posts/tidytuesday26-1-12.html",
+    "href": "posts/tidytuesday26-1-12.html",
+    "title": "Tidy Tuesday 2026-01-12",
+    "section": "",
+    "text": "library(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(ggplot2)\nlibrary(sf)\n\nWarning: package 'sf' was built under R version 4.3.3\n\n\nLinking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE\n\nlibrary(rnaturalearth)"
+  },
+  {
+    "objectID": "posts/tidytuesday26-1-12.html#load-packages",
+    "href": "posts/tidytuesday26-1-12.html#load-packages",
+    "title": "Tidy Tuesday 2026-01-12",
+    "section": "",
+    "text": "library(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(ggplot2)\nlibrary(sf)\n\nWarning: package 'sf' was built under R version 4.3.3\n\n\nLinking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE\n\nlibrary(rnaturalearth)"
+  },
+  {
+    "objectID": "posts/tidytuesday26-1-12.html#load-data",
+    "href": "posts/tidytuesday26-1-12.html#load-data",
+    "title": "Tidy Tuesday 2026-01-12",
+    "section": "Load Data",
+    "text": "Load Data\n\ntuesdata &lt;- tidytuesdayR::tt_load(2026, week = 2)\n\n---- Compiling #TidyTuesday Information for 2026-01-13 ----\n--- There is 1 file available ---\n\n\n── Downloading files ───────────────────────────────────────────────────────────\n\n  1 of 1: \"africa.csv\"\n\nafrica &lt;- tuesdata$africa"
+  },
+  {
+    "objectID": "posts/tidytuesday26-1-12.html#data-exploration",
+    "href": "posts/tidytuesday26-1-12.html#data-exploration",
+    "title": "Tidy Tuesday 2026-01-12",
+    "section": "Data Exploration",
+    "text": "Data Exploration\n\nwhich(is.na(africa))\n\ninteger(0)\n\n\n\nafrica %&gt;% \n  group_by_all() %&gt;% \n  filter(n() &gt; 1) %&gt;% \n  ungroup()\n\n# A tibble: 68 × 4\n   language family      native_speakers country \n   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt; &lt;chr&gt;   \n 1 Afar     Afroasiatic         2500000 Ethiopia\n 2 Afar     Afroasiatic         2500000 Djibouti\n 3 Afar     Afroasiatic         2500000 Eritrea \n 4 Afar     Afroasiatic         2500000 Djibouti\n 5 Afar     Afroasiatic         2500000 Eritrea \n 6 Afar     Afroasiatic         2500000 Ethiopia\n 7 Bariba   Niger–Congo         1100000 Benin   \n 8 Bariba   Niger–Congo         1100000 Benin   \n 9 Bangi    Niger–Congo          120000 Congo   \n10 Bangi    Niger–Congo          120000 Congo   \n# ℹ 58 more rows\n\n\n\nafrica_clean &lt;- unique(africa)\n\n\nafrica_clean %&gt;% \n  group_by_all() %&gt;% \n  filter(n() &gt; 1) %&gt;% \n  ungroup()\n\n# A tibble: 0 × 4\n# ℹ 4 variables: language &lt;chr&gt;, family &lt;chr&gt;, native_speakers &lt;dbl&gt;,\n#   country &lt;chr&gt;\n\n\n\nafrica_lang &lt;- africa_clean %&gt;% \n  group_by(country) %&gt;% \n  tally(name = \"num_langs_spoken\")\n\n\nafrica_lang$country &lt;- tolower(africa_lang$country)\n\n\nafrica_lang[rep(12,2),]\n\n# A tibble: 2 × 2\n  country num_langs_spoken\n  &lt;chr&gt;              &lt;int&gt;\n1 congo                 80\n2 congo                 80\n\n\n\nafrica_lang1 &lt;- rbind(africa_lang[-12,],africa_lang[rep(12,2),])\n\n\nafrica_lang1[51, 1] = \"democratic republic of the congo\"\nafrica_lang1[52, 1] = \"republic of the congo\"\n\n\nafrica_countries &lt;- ne_countries(\n  continent = \"Africa\",\n  scale = \"medium\",\n  returnclass = \"sf\"\n)\n\n\nafrica_countries$geounit &lt;- tolower(africa_countries$geounit)\n\n\nafrica_countries1 &lt;- africa_countries %&gt;% \n  select(geounit, geometry)\n\n\nafrica_countries2 &lt;- africa_countries1 %&gt;% \n  left_join(africa_lang1, by = c(\"geounit\" = \"country\"))\n\n\nggplot(africa_countries2) +\n  geom_sf(aes(fill = num_langs_spoken), color = \"white\", linewidth = 0.2) +\n  scale_fill_viridis_c(option = \"plasma\") +\n  labs(\n    title = \"Number of Languages Spoken in African Countries\",\n    caption = \"Source: Natural Earth and Data Science Learning Community\",\n    fill = \"\"\n  ) +\n  theme_void()"
   }
 ]
